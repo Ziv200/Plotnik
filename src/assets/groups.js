@@ -2,7 +2,7 @@ const groups = [
     {
         id:1,
         name:'Drums',
-        color:'red'
+        color:'green'
     }
 ]
 

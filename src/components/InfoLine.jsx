@@ -3,7 +3,7 @@ import './InfoLine.css'
 
 const InfoLine = () => {
   return (
-    <div class="infoline">
+    <div className="infoline">
         <div className='infobox'>
             <div className="info-key">#No</div>
             <div className="info-value">2</div>
