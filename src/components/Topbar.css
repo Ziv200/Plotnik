@@ -1,0 +1,26 @@
+
+
+.logo{
+    font-size: 1.5rem;
+}
+
+.projectName{
+    font-size: 1rem;
+    margin-inline: 1.5rem;
+    
+}
+
+.thumbnail-image{
+    width:40px;
+    border-radius: 50%;
+}
+
+.dropstart .dropdown-toggle::before{
+    display: none;
+}
+
+#right-nav, #left-nav{
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+}

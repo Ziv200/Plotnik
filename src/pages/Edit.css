@@ -1,0 +1,14 @@
+#sidebar{
+    padding: 0;
+}
+
+#infoline{
+    background-color: #525151;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+#canvas{
+    display: flex;
+    justify-content: center;
+}
