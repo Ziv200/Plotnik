@@ -1,0 +1,16 @@
+.expandlistbtn {
+  padding-block: 0.1rem;
+  border-radius: 0;
+}
+
+.expandlistbtns {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 5px;
+}
+
+.table {
+  overflow: scroll;
+  block-size: 45vh;
+  border: 2px #acb5bd solid;
+}
