@@ -6,26 +6,29 @@ import ProjSettings from "../components/Editor/ProjSetting/ProjSettings";
 import StageComp from "../components/Editor/StageComp/StageComp";
 import ExpandedTable from "../components/Editor/ExpandedTable/ExpandedTable";
 //-----------------------
-import { useState } from "react";
 //css
 import classes from "./Edit.module.css";
+//overmind
+import { useAppState, useActions, useEffects, useReaction } from "../overmind";
 
 const Edit = () => {
-  //projSettings Modal show/hide logic
-  const [showProjSettings, setShowProjSettings] = useState(false);
-  const handleCloseProjSettings = () => setShowProjSettings(false);
-  const handleShowProjSettings = () => setShowProjSettings(true);
+  //get state from overmind
+  const state = useAppState();
+  // projSettings Modal show/hide logic - earse please!!!
+  // const [showProjSettings, setShowProjSettings] = useState(false);
+  // const handleCloseProjSettings = () => setShowProjSettings(false);
+  // const handleShowProjSettings = () => setShowProjSettings(true);
   //------------------------------------
 
   //state to manage plot/expanded list view
-  const [mainView, setMainView] = useState("plot");
+  // const [mainView, setMainView] = useState("plot");
 
   return (
     <>
-      <ProjSettings show={showProjSettings} onHide={handleCloseProjSettings} />
+      <ProjSettings />
       <Container fluid>
         <Row>
-          <Topbar showProjSettings={handleShowProjSettings} />
+          <Topbar />
         </Row>
         <Row>
           <Col sm={3} xl={2} className={classes.sidebar}>
@@ -35,7 +38,9 @@ const Edit = () => {
             <Row className={classes.infoline}>
               <InfoLine />
             </Row>
-            <Row className={classes.canvas}>{mainView === "plot" ? <StageComp /> : <ExpandedTable />}</Row>
+            <Row className={classes.canvas}>
+              {state.editPage.mainViewMode === "plot" ? <StageComp /> : <ExpandedTable />}
+            </Row>
           </Col>
         </Row>
       </Container>

@@ -5,10 +5,16 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { BsShareFill, BsFillGearFill } from "react-icons/bs";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
+//overmind
+import { useAppState, useActions, useEffects, useReaction } from "../../../overmind";
+
 //css
 import "./Topbar.css";
 
-const Topbar = (props, { projectName = "Untitled" }) => {
+const Topbar = ({ projectName = "Untitled" }) => {
+  //overmind
+  const state = useAppState();
+  const actions = useActions();
   //fake profile image
   const profileImage = "src/images/profile.jpeg";
 
@@ -43,7 +49,7 @@ const Topbar = (props, { projectName = "Untitled" }) => {
             drop='start'
             id='menuitem-projsettings'
             title={<BsFillGearFill style={{ fontSize: "1.5rem" }} />}>
-            <NavDropdown.Item onClick={props.showProjSettings}>Project Settings</NavDropdown.Item>
+            <NavDropdown.Item onClick={actions.showProjSettings}>Project Settings</NavDropdown.Item>
           </NavDropdown>
           <NavDropdown
             drop='start'

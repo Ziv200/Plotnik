@@ -1,16 +1,15 @@
-import { useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css'
-import Edit from './pages/Edit';
-
-
+import { useState } from "react";
+//styles
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+//components
+import Edit from "./pages/Edit";
 function App() {
-
   return (
     <>
-    <Edit/>
+      <Edit />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

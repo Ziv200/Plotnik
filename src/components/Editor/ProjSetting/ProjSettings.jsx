@@ -4,11 +4,15 @@ import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 //css
 import classes from "./ProjSettings.module.css";
+//overmind
+import { useAppState, useActions } from "../../../overmind";
 
-function ProjSetting(props) {
+function ProjSetting() {
+  const state = useAppState();
+  const actions = useActions();
   return (
     <>
-      <Modal show={props.show} onHide={props.onHide} backdrop='true' keyboard={false}>
+      <Modal onHide={actions.hideProjSettings} show={state.editPage.projSettingsShow} backdrop='true' keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title>Project Settings</Modal.Title>
         </Modal.Header>
@@ -34,7 +38,7 @@ function ProjSetting(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={props.onHide}>
+          <Button onClick={actions.hideProjSettings} variant='secondary'>
             Close
           </Button>
           <Button variant='primary'>Save</Button>

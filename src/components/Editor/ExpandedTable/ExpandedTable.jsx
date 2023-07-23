@@ -41,7 +41,7 @@ const ExpandedTable = () => {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <div className={classes.table}>
+      <div>
         <Table striped bordered hover>
           <thead>
             <tr>

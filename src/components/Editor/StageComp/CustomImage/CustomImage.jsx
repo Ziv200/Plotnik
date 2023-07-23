@@ -1,5 +1,6 @@
 import { Image, Text, Group } from "react-konva";
 import useImage from "use-image";
+import { useAppState, useActions } from "../../../../overmind";
 
 //dummy data
 import icons from "../../../../assets/Icons";
@@ -15,7 +16,6 @@ const CustomImage = ({ data }) => {
   };
   //exctract image url
   const url = icons.filter((icon) => icon.id === data.icon)[0].url;
-  console.log(url);
   const [image] = useImage(url);
 
   return (

@@ -2,17 +2,20 @@
 import { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
+import ChangeViewBtn from "./ChangeViewBtn/ChangeViewBtn";
 //css
 import classes from "./LineTable.module.css";
-
+//overmind
+import { useActions, useAppState } from "../../../overmind";
+//-----------------------------------------------
 const LineTable = ({ inputs, outputs, groups }) => {
+  const actions = useActions();
+  const state = useAppState();
   const [tabSel, setTabSel] = useState("inputs");
 
   const findGroupColor = (input, groups) => {
     if (input.group !== null) {
       const color = groups.filter((group) => group.id === input.group)[0].color;
-      //console.log(color[0].color)
       return { backgroundColor: `${color}` };
     }
     return {};
@@ -21,9 +24,7 @@ const LineTable = ({ inputs, outputs, groups }) => {
   return (
     <>
       <div className={classes.expandlistbtns}>
-        <Button className={classes.expandlistbtn} variant='secondary'>
-          Expand List
-        </Button>
+        <ChangeViewBtn />
       </div>
       <Nav variant='tabs' defaultActiveKey='Inputs'>
         <Nav.Item>
