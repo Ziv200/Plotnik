@@ -1,0 +1,14 @@
+.sidebar {
+  padding: 0;
+}
+
+.infoline {
+  background-color: #525151;
+  height: 60px;
+}
+
+.canvas {
+  margin: auto;
+  width: 1123px;
+  height: 794px;
+}
