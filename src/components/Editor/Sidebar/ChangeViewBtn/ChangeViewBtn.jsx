@@ -16,7 +16,7 @@ const ChangeViewBtn = () => {
   };
   return (
     <Button onClick={() => changeViewFunc()} className={classes.expandlistbtn} variant='secondary'>
-      {state.editPage.mainViewMode === "plot" ? "Expand Table" : "Back To Plot View"}
+      {state.editPage.mainViewMode === "plot" ? "List View" : "Plot View"}
     </Button>
   );
 };

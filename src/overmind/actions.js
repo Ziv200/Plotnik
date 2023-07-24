@@ -12,3 +12,7 @@ export const showProjSettings = ({ state }) => {
 export const setSelectedObjId = ({ state }, id) => {
   state.editPage.selectedObjId = id;
 };
+
+export const editEnableToggle = ({ state }) => {
+  state.editPage.editEnable = !state.editPage.editEnable;
+};

@@ -3,6 +3,7 @@ import { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Nav from "react-bootstrap/Nav";
 import ChangeViewBtn from "./ChangeViewBtn/ChangeViewBtn";
+import EditEnableBtn from "./EditEnableBtn/EditEnableBtn";
 //css
 import classes from "./LineTable.module.css";
 //overmind
@@ -11,8 +12,9 @@ import { useActions, useAppState } from "../../../overmind";
 const LineTable = ({ inputs, outputs, groups }) => {
   const actions = useActions();
   const state = useAppState();
+  //
   const [tabSel, setTabSel] = useState("inputs");
-
+  //
   const findGroupColor = (input, groups) => {
     if (input.group !== null) {
       const color = groups.filter((group) => group.id === input.group)[0].color;
@@ -23,9 +25,6 @@ const LineTable = ({ inputs, outputs, groups }) => {
 
   return (
     <>
-      <div className={classes.expandlistbtns}>
-        <ChangeViewBtn />
-      </div>
       <Nav variant='tabs' defaultActiveKey='Inputs'>
         <Nav.Item>
           <Nav.Link eventKey='Inputs' onClick={() => setTabSel("inputs")}>
@@ -57,7 +56,7 @@ const LineTable = ({ inputs, outputs, groups }) => {
           <tbody>
             {tabSel === "inputs" &&
               inputs.map((input) => (
-                <tr key={inputs.id}>
+                <tr onClick={() => actions.setSelectedObjId(input.id)} key={input.id}>
                   <td style={findGroupColor(input, groups)}>
                     <strong>{input.id}</strong>
                   </td>

@@ -17,10 +17,10 @@ function ProjSetting() {
           <Modal.Title>Project Settings</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form noValidate>
             <Form.Group className='mb-3' controlId='formProjectName'>
               <Form.Label>Project Name:</Form.Label>
-              <Form.Control maxLength={25} type='text' />
+              <Form.Control maxLength={25} type='text' value={state.editPage.projSettings.projName} />
             </Form.Group>
 
             <Form.Group className='mb-3' controlId='formArtistName'>
@@ -41,7 +41,9 @@ function ProjSetting() {
           <Button onClick={actions.hideProjSettings} variant='secondary'>
             Close
           </Button>
-          <Button variant='primary'>Save</Button>
+          <Button type='submit' variant='primary'>
+            Save
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

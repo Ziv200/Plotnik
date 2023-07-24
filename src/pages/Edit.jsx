@@ -5,6 +5,7 @@ import InfoLine from "../components/Editor/InfoLine/InfoLine";
 import ProjSettings from "../components/Editor/ProjSetting/ProjSettings";
 import StageComp from "../components/Editor/StageComp/StageComp";
 import ExpandedTable from "../components/Editor/ExpandedTable/ExpandedTable";
+import ObjAccordion from "../components/Editor/ObjAccordion/ObjAccordion";
 //-----------------------
 //css
 import classes from "./Edit.module.css";
@@ -14,14 +15,6 @@ import { useAppState, useActions, useEffects, useReaction } from "../overmind";
 const Edit = () => {
   //get state from overmind
   const state = useAppState();
-  // projSettings Modal show/hide logic - earse please!!!
-  // const [showProjSettings, setShowProjSettings] = useState(false);
-  // const handleCloseProjSettings = () => setShowProjSettings(false);
-  // const handleShowProjSettings = () => setShowProjSettings(true);
-  //------------------------------------
-
-  //state to manage plot/expanded list view
-  // const [mainView, setMainView] = useState("plot");
 
   return (
     <>
@@ -38,9 +31,24 @@ const Edit = () => {
             <Row className={classes.infoline}>
               <InfoLine />
             </Row>
-            <Row className={classes.canvas}>
-              {state.editPage.mainViewMode === "plot" ? <StageComp /> : <ExpandedTable />}
-            </Row>
+            {state.editPage.mainViewMode === "plot" && (
+              <Row>
+                <Col>
+                  <StageComp />
+                </Col>
+                <Col>
+                  <ObjAccordion />
+                </Col>
+              </Row>
+            )}
+            {state.editPage.mainViewMode === "list" && (
+              <Row>
+                <Col sm={9} xl={10}>
+                  <ExpandedTable />
+                </Col>
+                <Col></Col>
+              </Row>
+            )}
           </Col>
         </Row>
       </Container>

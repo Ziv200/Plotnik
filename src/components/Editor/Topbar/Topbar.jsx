@@ -11,7 +11,7 @@ import { useAppState, useActions, useEffects, useReaction } from "../../../overm
 //css
 import "./Topbar.css";
 
-const Topbar = ({ projectName = "Untitled" }) => {
+const Topbar = () => {
   //overmind
   const state = useAppState();
   const actions = useActions();
@@ -19,10 +19,10 @@ const Topbar = ({ projectName = "Untitled" }) => {
   const profileImage = "src/images/profile.jpeg";
 
   return (
-    <Navbar className='bg-body-tertiary' data-bs-theme='dark'>
+    <Navbar className='bg-body-tertiary'>
       <Container fluid>
         <Navbar.Brand className='logo'>
-          Plotnik <span className='projectName'>{projectName}</span>
+          Plotnik <span className='projectName'>{state.editPage.projSettings.projName}</span>
         </Navbar.Brand>
         <Nav className='me-auto' id='left-nav'>
           <NavDropdown title='File' id='menuitem-file'>

@@ -11,6 +11,5 @@
 
 .table {
   overflow: scroll;
-  block-size: 45vh;
-  border: 2px #acb5bd solid;
+  block-size: 50vh;
 }

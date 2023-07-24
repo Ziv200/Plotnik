@@ -1,0 +1,16 @@
+.objaccordionwrap {
+  padding: 20px 5px;
+}
+
+.header {
+  border: 1px solid rgba(172, 181, 189, 0.3);
+  padding: 20px 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.accordionbody {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 7px;
+}

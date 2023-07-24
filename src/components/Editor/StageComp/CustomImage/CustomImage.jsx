@@ -6,6 +6,7 @@ import { useAppState, useActions } from "../../../../overmind";
 import icons from "../../../../assets/Icons";
 
 const CustomImage = ({ data }) => {
+  const actions = useActions();
   // The dragBoundFunc for restricting drag movement within the stage
   const dragBoundFunc = (pos) => {
     const stageWidth = 1123;
@@ -19,7 +20,12 @@ const CustomImage = ({ data }) => {
   const [image] = useImage(url);
 
   return (
-    <Group draggable x={data.canvaspos.x} y={data.canvaspos.y} dragBoundFunc={dragBoundFunc}>
+    <Group
+      onMouseDown={() => actions.setSelectedObjId(data.id)}
+      draggable
+      x={data.canvaspos.x}
+      y={data.canvaspos.y}
+      dragBoundFunc={dragBoundFunc}>
       <Image width={100} height={100} image={image} />
       <Text fontSize={14} fontStyle='bold' text={`${data.inputno}. ${data.name}`} />
     </Group>

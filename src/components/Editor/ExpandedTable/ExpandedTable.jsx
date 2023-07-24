@@ -10,8 +10,14 @@ import inputs from "../../../assets/inputs";
 import outputs from "../../../assets/outputs";
 import groups from "../../../assets/groups";
 
+//overmind
+import { useActions, useAppState } from "../../../overmind";
+
 const ExpandedTable = () => {
   const [tabSel, setTabSel] = useState("inputs");
+
+  const actions = useActions();
+  const state = useAppState();
 
   const findGroupColor = (input, groups) => {
     if (input.group !== null) {
@@ -23,7 +29,7 @@ const ExpandedTable = () => {
   };
 
   return (
-    <>
+    <div>
       <Nav variant='tabs' defaultActiveKey='Inputs'>
         <Nav.Item>
           <Nav.Link eventKey='Inputs' onClick={() => setTabSel("inputs")}>
@@ -40,30 +46,56 @@ const ExpandedTable = () => {
             Groups
           </Nav.Link>
         </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey='test1' onClick={() => setTabSel("test1")}>
+            test1
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey='test2' onClick={() => setTabSel("test2")}>
+            test2
+          </Nav.Link>
+        </Nav.Item>
       </Nav>
-      <div>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>
-                <strong>#</strong>
-              </th>
-              <th>Name</th>
-              {tabSel === "inputs" && <th>Mic</th>}
-            </tr>
-          </thead>
-          <tbody>
-            {tabSel === "inputs" &&
-              inputs.map((input) => (
-                <tr key={inputs.id}>
+      <div className={classes.tablewrap}>
+        {tabSel === "inputs" && (
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>
+                  <strong>#</strong>
+                </th>
+                <th>Name</th>
+                <th>Mic</th>
+                <th>Stand</th>
+                <th>Position</th>
+                <th>Rack</th>
+                <th>Comment</th>
+                <th>Group</th>
+              </tr>
+            </thead>
+            <tbody>
+              {inputs.map((input) => (
+                <tr onClick={() => actions.setSelectedObjId(input.id)} key={inputs.id}>
                   <td style={findGroupColor(input, groups)}>
                     <strong>{input.id}</strong>
                   </td>
                   <td>{input.name}</td>
                   <td>{input.mic}</td>
+                  <td>{input.stand}</td>
+                  <td>{input.pos}</td>
+                  <td>{input.stagebox}</td>
+                  <td>{input.comment}</td>
+                  <td style={findGroupColor(input, groups)}>{input.group}</td>
                 </tr>
               ))}
-            {tabSel === "outputs" &&
+            </tbody>
+          </Table>
+        )}
+      </div>
+    </div>
+
+    /* {tabSel === "outputs" &&
               outputs.map((output) => (
                 <tr key={output.id}>
                   <td>
@@ -80,11 +112,7 @@ const ExpandedTable = () => {
                   </td>
                   <td style={{ backgroundColor: `${group.color}` }}>{group.name}</td>
                 </tr>
-              ))}
-          </tbody>
-        </Table>
-      </div>
-    </>
+              ))} */
   );
 };
 

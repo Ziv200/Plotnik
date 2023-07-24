@@ -1,0 +1,17 @@
+.iconimgwrap {
+  border: 1px solid rgba(172, 181, 189, 0.3);
+  height: 75px;
+  width: 75px;
+  padding: 7px;
+  background-color: rgb(172, 181, 189);
+  cursor: pointer;
+}
+
+.iconimgwrap img {
+  max-width: 100%;
+}
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
