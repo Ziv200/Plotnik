@@ -1,0 +1,4 @@
+.tablewrap {
+  max-height: 75vh;
+  overflow: scroll;
+}
