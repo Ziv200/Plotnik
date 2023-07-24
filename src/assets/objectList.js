@@ -1,6 +1,6 @@
 const objectList = {
   vocal_mic: {
-    type: "input",
+    type: "inputs",
     name: "Voc",
     mic: "",
     stand: "Long",
@@ -17,7 +17,7 @@ const objectList = {
     group: null,
   },
   gtr_elc: {
-    type: "input",
+    type: "inputs",
     name: "Elc Gtr",
     mic: "",
     stand: "",
@@ -34,7 +34,7 @@ const objectList = {
     group: null,
   },
   gtr_cls: {
-    type: "input",
+    type: "inputs",
     name: "Cls Gtr",
     mic: "",
     stand: "",
@@ -51,7 +51,7 @@ const objectList = {
     group: null,
   },
   gtr_acc: {
-    type: "input",
+    type: "inputs",
     name: "Acc Gtr",
     mic: "",
     stand: "",
@@ -68,7 +68,7 @@ const objectList = {
     group: null,
   },
   gtr_bass: {
-    type: "input",
+    type: "inputs",
     name: "Bass",
     mic: "",
     stand: "",
@@ -85,7 +85,7 @@ const objectList = {
     group: null,
   },
   drum_set: {
-    type: "input",
+    type: "inputs",
     name: "Drum Set",
     mic: "",
     stand: "",
@@ -102,7 +102,7 @@ const objectList = {
     group: null,
   },
   drum_snr: {
-    type: "input",
+    type: "inputs",
     name: "Snare",
     mic: "",
     stand: "",
@@ -119,7 +119,7 @@ const objectList = {
     group: null,
   },
   drum_crash: {
-    type: "input",
+    type: "inputs",
     name: "Crash",
     mic: "",
     stand: "",

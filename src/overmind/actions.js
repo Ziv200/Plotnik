@@ -23,8 +23,8 @@ export const editEnableToggle = ({ state }) => {
 //
 
 export const deleteCanvasObject = ({ state }, obj) => {
-  const list = state.editPage.lineList;
-  list.inputs = list.inputs = list.inputs.filter((input) => input.id !== obj.id);
+  const list = state.editPage.lineList[`${obj.type}`];
+  state.editPage.lineList[`${obj.type}`] = list.filter((input) => input.id !== obj.id);
 };
 
 export const addCanvasObject = ({ state }, obj) => {
@@ -34,7 +34,7 @@ export const addCanvasObject = ({ state }, obj) => {
 };
 
 export const updatePostionAfterDrag = ({ state }, { obj, pos }) => {
-  const data = state.editPage.lineList[`${obj.type}s`];
+  const data = state.editPage.lineList[`${obj.type}`];
   const item = data.find((item) => item.id === obj.id);
   if (item) {
     item.canvaspos = { x: pos.x, y: pos.y };
