@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { BsShareFill, BsFillGearFill } from "react-icons/bs";
+import ProjectName from "./ProjectName/ProjectName";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 //overmind
@@ -15,6 +16,7 @@ const Topbar = () => {
   //overmind
   const state = useAppState();
   const actions = useActions();
+
   //fake profile image
   const profileImage = "src/images/profile.jpeg";
 
@@ -22,7 +24,9 @@ const Topbar = () => {
     <Navbar className='bg-body-tertiary'>
       <Container fluid>
         <Navbar.Brand className='logo'>
-          Plotnik <span className='projectName'>{state.editPage.projSettings.projName}</span>
+          Plotnik
+          {/* <span className='projectName'>{state.editPage.projSettings.projName}</span> */}
+          <ProjectName />
         </Navbar.Brand>
         <Nav className='me-auto' id='left-nav'>
           <NavDropdown title='File' id='menuitem-file'>

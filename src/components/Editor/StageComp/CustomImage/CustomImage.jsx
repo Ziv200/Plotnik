@@ -41,7 +41,7 @@ const CustomImage = ({ data }) => {
       dragBoundFunc={dragBoundFunc}
       onDragEnd={handleDragEnd}>
       <Image width={175} height={175} image={image} />
-      <Text y={-10} fontSize={14} fontStyle='bold' text={`${data.inputno}. ${data.name}`} />
+      <Text y={-10} fontSize={14} fontStyle='bold' text={`${data.inputno || ""} ${data.name}`} />
       {showEditHandle && (
         <Text
           onClick={() => actions.deleteCanvasObject(data)}
