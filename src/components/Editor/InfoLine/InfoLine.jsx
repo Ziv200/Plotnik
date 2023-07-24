@@ -4,13 +4,11 @@ import classes from "./InfoLine.module.css";
 import { useAppState } from "../../../overmind";
 //dummy data
 import inputs from "../../../assets/inputs";
-import groups from "../../../assets/groups";
 
 const InfoLine = () => {
   const state = useAppState();
   const selectedId = state.editPage.selectedObjId;
   const selectedLine = inputs.filter((input) => input.id === selectedId)[0];
-
   return (
     <div className={classes.infoline}>
       <div className={classes.infobox} id='infoline-no'>

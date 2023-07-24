@@ -1,5 +1,6 @@
 .objaccordionwrap {
   padding: 20px 5px;
+  cursor: pointer;
 }
 
 .header {

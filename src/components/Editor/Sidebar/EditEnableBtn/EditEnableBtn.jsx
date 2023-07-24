@@ -13,7 +13,7 @@ const EditEnableBtn = () => {
       onClick={() => actions.editEnableToggle()}
       className={editState ? classes.editEnabled : classes.editDisabled}
       variant='secondary'>
-      {state.editPage.editEnable ? "Edit" : "Select"}
+      {state.editPage.editEnable ? "Edit Mode" : "Select Mode"}
     </Button>
   );
 };
