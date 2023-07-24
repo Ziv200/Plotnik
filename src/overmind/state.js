@@ -16,9 +16,9 @@ export const state = {
       comment: "",
     },
     lineList: {
-      inputs: { inputs },
-      outputs: { outputs },
-      groups: { groups },
+      inputs: inputs,
+      outputs: outputs,
+      groups: groups,
     },
   },
 };

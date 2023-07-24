@@ -2,12 +2,11 @@
 import classes from "./InfoLine.module.css";
 //overmind
 import { useAppState } from "../../../overmind";
-//dummy data
-import inputs from "../../../assets/inputs";
 
 const InfoLine = () => {
   const state = useAppState();
   const selectedId = state.editPage.selectedObjId;
+  const inputs = state.editPage.lineList.inputs;
   const selectedLine = inputs.filter((input) => input.id === selectedId)[0];
   return (
     <div className={classes.infoline}>
