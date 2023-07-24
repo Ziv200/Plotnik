@@ -5,20 +5,18 @@ import Nav from "react-bootstrap/Nav";
 //css
 import classes from "./ExpandedTable.module.css";
 
-//dummy data
-import inputs from "../../../assets/inputs";
-import outputs from "../../../assets/outputs";
-import groups from "../../../assets/groups";
-
 //overmind
 import { useActions, useAppState } from "../../../overmind";
 
 const ExpandedTable = () => {
   const [tabSel, setTabSel] = useState("inputs");
-
+  //overmind
   const actions = useActions();
   const state = useAppState();
-
+  const inputs = state.editPage.lineList.inputs;
+  const outputs = state.editPage.lineList.outputs;
+  const groups = state.editPage.lineList.groups;
+  //
   const findGroupColor = (input, groups) => {
     if (input.group !== null) {
       const color = groups.filter((group) => group.id === input.group)[0].color;
@@ -76,7 +74,7 @@ const ExpandedTable = () => {
             </thead>
             <tbody>
               {inputs.map((input) => (
-                <tr onClick={() => actions.setSelectedObjId(input.id)} key={inputs.id}>
+                <tr onClick={() => actions.setSelectedObjId(input)} key={inputs.id}>
                   <td style={findGroupColor(input, groups)}>
                     <strong>{input.id}</strong>
                   </td>
@@ -92,27 +90,62 @@ const ExpandedTable = () => {
             </tbody>
           </Table>
         )}
-      </div>
-    </div>
-
-    /* {tabSel === "outputs" &&
-              outputs.map((output) => (
+        {tabSel === "outputs" && (
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>
+                  <strong>#</strong>
+                </th>
+                <th>Name</th>
+                <th>Device</th>
+                <th>Position</th>
+                <th>Rack</th>
+                <th>Comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              {outputs.map((output) => (
                 <tr key={output.id}>
                   <td>
                     <strong>{output.id}</strong>
                   </td>
                   <td>{output.name}</td>
+                  <td>{output.device}</td>
+                  <td>{output.pos}</td>
+                  <td>{output.stagebox}</td>
+                  <td>{output.comment}</td>
                 </tr>
               ))}
-            {tabSel === "groups" &&
-              groups.map((group) => (
+            </tbody>
+          </Table>
+        )}
+        {tabSel === "groups" && (
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>
+                  <strong>#</strong>
+                </th>
+                <th>Name</th>
+                <th>Members</th>
+              </tr>
+            </thead>
+            <tbody>
+              {groups.map((group) => (
                 <tr key={group.id}>
                   <td style={{ backgroundColor: `${group.color}` }}>
                     <strong>{group.id}</strong>
                   </td>
                   <td style={{ backgroundColor: `${group.color}` }}>{group.name}</td>
+                  <td style={{ backgroundColor: `${group.color}` }}>{groups.members}</td>
                 </tr>
-              ))} */
+              ))}
+            </tbody>
+          </Table>
+        )}
+      </div>
+    </div>
   );
 };
 

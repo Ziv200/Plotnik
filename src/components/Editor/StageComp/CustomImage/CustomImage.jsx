@@ -30,7 +30,7 @@ const CustomImage = ({ data }) => {
 
   return (
     <Group
-      onMouseDown={() => actions.setSelectedObjId(data.id)}
+      onMouseDown={() => actions.setSelectedObjId(data)}
       draggable={EditMode ? true : false}
       x={data.canvaspos.x}
       y={data.canvaspos.y}

@@ -1,6 +1,7 @@
 const inputs = [
   {
     id: 1,
+    type: "input",
     name: "BD",
     mic: "Beta 52",
     stand: "short",
@@ -18,6 +19,7 @@ const inputs = [
   },
   {
     id: 2,
+    type: "input",
     name: "SNR",
     mic: "57",
     stand: "short",
@@ -35,6 +37,7 @@ const inputs = [
   },
   {
     id: 3,
+    type: "input",
     name: "OH",
     mic: "C1000",
     stand: "Long",
@@ -52,6 +55,7 @@ const inputs = [
   },
   {
     id: 4,
+    type: "input",
     name: "Bass",
     mic: "DI",
     stand: "none",
@@ -69,6 +73,7 @@ const inputs = [
   },
   {
     id: 5,
+    type: "input",
     name: "E.Gtr",
     mic: "57",
     stand: "Short",
@@ -86,6 +91,7 @@ const inputs = [
   },
   {
     id: 6,
+    type: "input",
     name: "Voc1",
     mic: "58",
     stand: "Long",
@@ -103,6 +109,7 @@ const inputs = [
   },
   {
     id: 7,
+    type: "input",
     name: "Voc2",
     mic: "58",
     stand: "Long",
@@ -120,6 +127,7 @@ const inputs = [
   },
   {
     id: 8,
+    type: "input",
     name: "Voc3",
     mic: "58",
     stand: "Long",

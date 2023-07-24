@@ -6,10 +6,15 @@ import { useAppState } from "../../../overmind";
 const InfoLine = () => {
   const state = useAppState();
   const selectedId = state.editPage.selectedObjId;
+  const selectedType = state.editPage.selectedObjType;
   const inputs = state.editPage.lineList.inputs;
+
   const selectedLine = inputs.filter((input) => input.id === selectedId)[0];
   return (
     <div className={classes.infoline}>
+      <div className={classes.infobox} id='infoline-no'>
+        <div className={classes["line-type"]}>{selectedType}</div>
+      </div>
       <div className={classes.infobox} id='infoline-no'>
         <div className={classes["info-key"]}>#No</div>
         <div className='info-value'>{selectedId || "-"}</div>

@@ -21,7 +21,7 @@ const Sidebar = () => {
         <EditEnableBtn />
         <ChangeViewBtn />
       </div>
-      {mainViewMode === "plot" && <LineTable inputs={inputs} outputs={outputs} groups={groups} />}
+      {mainViewMode === "plot" && <LineTable />}
     </div>
   );
 };

@@ -9,9 +9,13 @@ import classes from "./LineTable.module.css";
 //overmind
 import { useActions, useAppState } from "../../../overmind";
 //-----------------------------------------------
-const LineTable = ({ inputs, outputs, groups }) => {
+const LineTable = () => {
+  //overmind
   const actions = useActions();
   const state = useAppState();
+  const inputs = state.editPage.lineList.inputs;
+  const outputs = state.editPage.lineList.outputs;
+  const groups = state.editPage.lineList.groups;
   //
   const [tabSel, setTabSel] = useState("inputs");
   //
@@ -56,7 +60,7 @@ const LineTable = ({ inputs, outputs, groups }) => {
           <tbody>
             {tabSel === "inputs" &&
               inputs.map((input) => (
-                <tr onClick={() => actions.setSelectedObjId(input.id)} key={input.id}>
+                <tr onClick={() => actions.setSelectedObjId(input)} key={input.id}>
                   <td style={findGroupColor(input, groups)}>
                     <strong>{input.id}</strong>
                   </td>

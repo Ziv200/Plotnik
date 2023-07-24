@@ -1,9 +1,11 @@
 const groups = [
-    {
-        id:1,
-        name:'Drums',
-        color:'green'
-    }
-]
+  {
+    id: 1,
+    type: "group",
+    name: "Drums",
+    color: "green",
+    memebers: [],
+  },
+];
 
-export default groups
+export default groups;
