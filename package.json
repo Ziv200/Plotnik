@@ -19,7 +19,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-konva": "^18.2.10",
-    "use-image": "^1.1.1"
+    "use-image": "^1.1.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",

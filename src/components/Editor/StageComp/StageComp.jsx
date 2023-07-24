@@ -3,7 +3,7 @@ import { Stage, Layer, Text } from "react-konva";
 import classes from "./StageComp.module.css";
 import CustomImage from "./CustomImage/CustomImage";
 //dummy data
-import inputs from "../../../assets/inputs";
+// import inputs from "../../../assets/inputs";
 //overmind
 import { useAppState } from "../../../overmind";
 
@@ -11,6 +11,7 @@ const StageComp = () => {
   const state = useAppState();
   const title = `${state.editPage.projSettings.projName}`;
   const copyright = "Created With Plotnik.com - By Ilan Ziv";
+  const inputs = state.editPage.lineList.inputs;
   return (
     <Stage className={classes.stage} width={1123} height={794}>
       <Layer>

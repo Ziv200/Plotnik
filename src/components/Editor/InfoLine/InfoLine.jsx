@@ -17,7 +17,7 @@ const InfoLine = () => {
       </div>
       <div className={classes.infobox} id='infoline-no'>
         <div className={classes["info-key"]}>#No</div>
-        <div className='info-value'>{selectedId || "-"}</div>
+        <div className='info-value'>{selectedLine ? selectedLine.inputno : "-"}</div>
       </div>
       <div className={classes.infobox} id='infoline-name'>
         <div className={classes["info-key"]}>Name</div>

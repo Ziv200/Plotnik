@@ -2,8 +2,6 @@
 import { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Nav from "react-bootstrap/Nav";
-import ChangeViewBtn from "./ChangeViewBtn/ChangeViewBtn";
-import EditEnableBtn from "./EditEnableBtn/EditEnableBtn";
 //css
 import classes from "./LineTable.module.css";
 //overmind
@@ -61,8 +59,8 @@ const LineTable = () => {
             {tabSel === "inputs" &&
               inputs.map((input) => (
                 <tr onClick={() => actions.setSelectedObjId(input)} key={input.id}>
-                  <td style={findGroupColor(input, groups)}>
-                    <strong>{input.id}</strong>
+                  <td>
+                    <strong>{input.inputno}</strong>
                   </td>
                   <td>{input.name}</td>
                   <td>{input.mic}</td>

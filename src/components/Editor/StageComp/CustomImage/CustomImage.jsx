@@ -3,8 +3,6 @@ import useImage from "use-image";
 import { useAppState, useActions } from "../../../../overmind";
 //css
 import classes from "./CustomImage.module.css";
-//dummy data
-import icons from "../../../../assets/Icons";
 
 const CustomImage = ({ data }) => {
   //overmind
@@ -23,9 +21,15 @@ const CustomImage = ({ data }) => {
     const y = Math.max(0, Math.min(pos.y, stageHeight - 100));
     return { x, y };
   };
+  // update position state after object drag
+  const handleDragEnd = (e) => {
+    const endPosition = e.target.position();
+    actions.updatePostionAfterDrag({ obj: data, pos: endPosition });
+  };
 
   //exctract image url
-  const url = icons.filter((icon) => icon.id === data.icon)[0].url;
+  // const url = icons.filter((icon) => icon.id === data.icon)[0].url;
+  const url = data.icon;
   const [image] = useImage(url);
 
   return (
@@ -34,12 +38,13 @@ const CustomImage = ({ data }) => {
       draggable={EditMode ? true : false}
       x={data.canvaspos.x}
       y={data.canvaspos.y}
-      dragBoundFunc={dragBoundFunc}>
-      <Image width={100} height={100} image={image} />
-      <Text fontSize={14} fontStyle='bold' text={`${data.inputno}. ${data.name}`} />
+      dragBoundFunc={dragBoundFunc}
+      onDragEnd={handleDragEnd}>
+      <Image width={175} height={175} image={image} />
+      <Text y={-10} fontSize={14} fontStyle='bold' text={`${data.inputno}. ${data.name}`} />
       {showEditHandle && (
         <Text
-          onClick={() => alert("implememnt delete")}
+          onClick={() => actions.deleteCanvasObject(data)}
           className={classes.deletexbtn}
           id={`obj_${data.id}_remove`}
           fontSize={30}
