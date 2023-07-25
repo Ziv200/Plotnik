@@ -6,8 +6,7 @@ export const state = {
   editPage: {
     editEnable: false,
     showProjSettings: false,
-    selectedObjType: "input",
-    selectedObjId: null,
+    selectedObj: null,
     infoLineData: null,
     mainViewMode: "plot",
     projSettingsShow: false,

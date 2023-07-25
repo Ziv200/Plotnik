@@ -8,10 +8,11 @@ const LineDetails = () => {
   //overmind
   const state = useAppState();
   const actions = useActions();
-  const line = state.editPage.lineList.return(
+  const line = state.editPage.lineList;
+  return (
     <div>
       <h5>Line Details:</h5>
-      <p>{state}</p>
+      <p></p>
       <Form></Form>
     </div>
   );

@@ -15,9 +15,9 @@ export const updateProjSettings = ({ state }, { key, value }) => {
   state.editPage.projSettings[`${key}`] = value;
 };
 
-export const setSelectedObjId = ({ state }, obj) => {
-  state.editPage.selectedObjId = obj.id;
-  state.editPage.selectedObjType = obj.type;
+export const setSelectedObj = ({ state }, obj) => {
+  state.editPage.selectedObj = { ...obj };
+  console.log(state.editPage.selectedObj);
 };
 
 export const editEnableToggle = ({ state }) => {

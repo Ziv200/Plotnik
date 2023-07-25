@@ -15,6 +15,7 @@
 
 .form input {
   width: fit-content;
+  max-width: 125px;
   border: none;
   background: transparent;
   border-bottom: 1px solid #ccc;

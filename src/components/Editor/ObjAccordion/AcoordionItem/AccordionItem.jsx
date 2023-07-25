@@ -9,10 +9,11 @@ const dummyObject = {
   stand: "Long",
   pos: null,
   stagebox: null,
-  inputno: null,
+  patchNo: null,
   comment: "",
   hasIcon: true,
   showLabel: true,
+  showPatchNo: true,
   icon: "src/images/icons/default.png",
   canvaspos: {
     x: 250,

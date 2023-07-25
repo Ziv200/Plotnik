@@ -12,7 +12,7 @@ const CustomImage = ({ data }) => {
   const EditMode = state.editPage.editEnable;
   //Show Edit Handle
   const showEditHandle =
-    EditMode && (state.editPage.selectedObjId !== null ? state.editPage.selectedObjId === data.id : false);
+    EditMode && (state.editPage.selectedObj !== null ? state.editPage.selectedObj.id === data.id : false);
   // The dragBoundFunc for restricting drag movement within the stage
   const dragBoundFunc = (pos) => {
     const stageWidth = 1123;
@@ -28,20 +28,19 @@ const CustomImage = ({ data }) => {
   };
 
   //exctract image url
-  // const url = icons.filter((icon) => icon.id === data.icon)[0].url;
   const url = data.icon;
   const [image] = useImage(url);
 
   return (
     <Group
-      onMouseDown={() => actions.setSelectedObjId(data)}
+      onMouseDown={() => actions.setSelectedObj(data)}
       draggable={EditMode ? true : false}
       x={data.canvaspos.x}
       y={data.canvaspos.y}
       dragBoundFunc={dragBoundFunc}
       onDragEnd={handleDragEnd}>
       <Image width={175} height={175} image={image} />
-      {data.showPatchNo && <Text x={80} y={165} fontSize={15} fontStyle='bold' text={data.inputno || ""} />}
+      {data.showPatchNo && <Text x={80} y={165} fontSize={15} fontStyle='bold' text={data.patchNo || ""} />}
       {data.showLabel && <Text x={60} y={165} fontSize={15} fontStyle='bold' text={data.name} />}
       {showEditHandle && (
         <Text

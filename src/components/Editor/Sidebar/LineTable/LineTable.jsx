@@ -58,7 +58,7 @@ const LineTable = () => {
           <tbody>
             {tabSel === "inputs" &&
               inputs.map((input) => (
-                <tr onClick={() => actions.setSelectedObjId(input)} key={input.id}>
+                <tr onClick={() => actions.setSelectedObj(input)} key={input.id}>
                   <td>
                     <strong>{input.patchNo}</strong>
                   </td>
