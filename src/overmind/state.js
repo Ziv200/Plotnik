@@ -12,7 +12,7 @@ export const state = {
     mainViewMode: "plot",
     projSettingsShow: false,
     projSettings: {
-      projName: "Kapaim Band",
+      projName: "Untitled",
       artistName: "",
       designerName: "",
       comment: "",

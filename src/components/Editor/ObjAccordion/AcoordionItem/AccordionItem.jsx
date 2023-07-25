@@ -5,13 +5,20 @@ import { useActions } from "../../../../overmind";
 const dummyObject = {
   type: "input",
   name: "Example",
+  mic: "",
   stand: "Long",
+  pos: null,
+  stagebox: null,
+  inputno: null,
+  comment: "",
   hasIcon: true,
+  showLabel: true,
   icon: "src/images/icons/default.png",
   canvaspos: {
     x: 250,
     y: 250,
   },
+  group: null,
 };
 const AccordionItem = ({ obj = dummyObject }) => {
   const actions = useActions();

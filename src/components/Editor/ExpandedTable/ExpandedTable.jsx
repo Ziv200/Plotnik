@@ -76,7 +76,7 @@ const ExpandedTable = () => {
               {inputs.map((input) => (
                 <tr onClick={() => actions.setSelectedObjId(input)} key={input.id}>
                   <td style={findGroupColor(input, groups)}>
-                    <strong>{input.inputno}</strong>
+                    <strong>{input.patchNo}</strong>
                   </td>
                   <td>{input.name}</td>
                   <td>{input.mic}</td>

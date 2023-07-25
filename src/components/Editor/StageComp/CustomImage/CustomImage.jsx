@@ -41,7 +41,8 @@ const CustomImage = ({ data }) => {
       dragBoundFunc={dragBoundFunc}
       onDragEnd={handleDragEnd}>
       <Image width={175} height={175} image={image} />
-      <Text y={-10} fontSize={14} fontStyle='bold' text={`${data.inputno || ""} ${data.name}`} />
+      {data.showPatchNo && <Text x={80} y={165} fontSize={15} fontStyle='bold' text={data.inputno || ""} />}
+      {data.showLabel && <Text x={60} y={165} fontSize={15} fontStyle='bold' text={data.name} />}
       {showEditHandle && (
         <Text
           onClick={() => actions.deleteCanvasObject(data)}
@@ -49,8 +50,8 @@ const CustomImage = ({ data }) => {
           id={`obj_${data.id}_remove`}
           fontSize={30}
           text='x'
-          x={100}
-          y={-30}
+          x={0}
+          y={0}
         />
       )}
     </Group>

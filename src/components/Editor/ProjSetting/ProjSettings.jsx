@@ -8,8 +8,20 @@ import classes from "./ProjSettings.module.css";
 import { useAppState, useActions } from "../../../overmind";
 
 function ProjSetting() {
+  //overmind
   const state = useAppState();
   const actions = useActions();
+  const projSetting = state.editPage.projSettings;
+  console.log();
+
+  //handle input change on prject settings form
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const key = e.target.name;
+    actions.updateProjSettings({ key: key, value: value });
+    return;
+  };
+
   return (
     <>
       <Modal onHide={actions.hideProjSettings} show={state.editPage.projSettingsShow} backdrop='true' keyboard={false}>
@@ -19,30 +31,51 @@ function ProjSetting() {
         <Modal.Body>
           <Form noValidate>
             <Form.Group className='mb-3' controlId='formProjectName'>
-              <Form.Label>Project Name:</Form.Label>
-              <Form.Control maxLength={25} type='text' value={state.editPage.projSettings.projName} />
+              <Form.Label className={classes.formlabel}>Project Name:</Form.Label>
+              <Form.Control
+                value={projSetting.projName}
+                name='projName'
+                onChange={handleChange}
+                maxLength={25}
+                type='text'
+              />
             </Form.Group>
-
             <Form.Group className='mb-3' controlId='formArtistName'>
-              <Form.Label>Artist Name:</Form.Label>
-              <Form.Control maxLength={25} type='text' />
+              <Form.Label className={classes.formlabel}>Artist Name:</Form.Label>
+              <Form.Control
+                value={projSetting.artistName}
+                name='artistName'
+                onChange={handleChange}
+                maxLength={25}
+                type='text'
+              />
             </Form.Group>
             <Form.Group className='mb-3' controlId='formPlotDesigner'>
-              <Form.Label>Plot Designer Name:</Form.Label>
-              <Form.Control maxLength={25} type='text' />
+              <Form.Label className={classes.formlabel}>Plot Designer Name:</Form.Label>
+              <Form.Control
+                value={projSetting.designerName}
+                name='designerName'
+                onChange={handleChange}
+                maxLength={25}
+                type='text'
+              />
             </Form.Group>
             <Form.Group className='mb-3' controlId='formComments'>
-              <Form.Label>Comments:</Form.Label>
-              <Form.Control rows={5} maxLength={250} as='textarea' />
+              <Form.Label className={classes.formlabel}>Comment:</Form.Label>
+              <Form.Control
+                value={projSetting.comment}
+                name='comment'
+                onChange={handleChange}
+                rows={5}
+                maxLength={250}
+                as='textarea'
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={actions.hideProjSettings} variant='secondary'>
             Close
-          </Button>
-          <Button type='submit' variant='primary'>
-            Save
           </Button>
         </Modal.Footer>
       </Modal>

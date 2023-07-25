@@ -1,6 +1,8 @@
-import LineTable from "./LineTable";
+import LineTable from "./LineTable/LineTable";
 import ChangeViewBtn from "./ChangeViewBtn/ChangeViewBtn";
 import EditEnableBtn from "./EditEnableBtn/EditEnableBtn";
+import LineDetails from "./LineDetails/LineDetails";
+//css
 import classes from "./Sidebar.module.css";
 
 // fake inputs data
@@ -21,7 +23,12 @@ const Sidebar = () => {
         <EditEnableBtn />
         <ChangeViewBtn />
       </div>
-      {mainViewMode === "plot" && <LineTable />}
+      {mainViewMode === "plot" && (
+        <>
+          <LineTable />
+          <LineDetails />
+        </>
+      )}
     </div>
   );
 };

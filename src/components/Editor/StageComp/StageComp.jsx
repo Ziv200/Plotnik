@@ -1,9 +1,9 @@
 import { Stage, Layer, Text } from "react-konva";
+import CustomImage from "./CustomImage/CustomImage";
+
 //css
 import classes from "./StageComp.module.css";
-import CustomImage from "./CustomImage/CustomImage";
-//dummy data
-// import inputs from "../../../assets/inputs";
+
 //overmind
 import { useAppState } from "../../../overmind";
 

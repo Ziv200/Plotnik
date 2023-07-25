@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 //css
 import classes from "./LineTable.module.css";
 //overmind
-import { useActions, useAppState } from "../../../overmind";
+import { useActions, useAppState } from "../../../../overmind";
 //-----------------------------------------------
 const LineTable = () => {
   //overmind
@@ -60,7 +60,7 @@ const LineTable = () => {
               inputs.map((input) => (
                 <tr onClick={() => actions.setSelectedObjId(input)} key={input.id}>
                   <td>
-                    <strong>{input.inputno}</strong>
+                    <strong>{input.patchNo}</strong>
                   </td>
                   <td>{input.name}</td>
                   <td>{input.mic}</td>

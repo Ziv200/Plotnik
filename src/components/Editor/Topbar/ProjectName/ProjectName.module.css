@@ -1,6 +1,9 @@
 .projectName {
   font-size: 1rem;
   margin-inline: 1.5rem;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .form {
@@ -11,17 +14,20 @@
 }
 
 .form input {
-  width: 100px;
+  width: fit-content;
   border: none;
   background: transparent;
   border-bottom: 1px solid #ccc;
   outline: none;
 }
 
-.submit {
-  margin-left: 1rem;
-  border: none;
-  background: transparent;
-  border-bottom: 1px solid #ccc;
-  outline: none;
+.editbtn {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbtn {
+  margin-left: 0.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
 }
