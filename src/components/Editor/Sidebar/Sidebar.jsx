@@ -1,7 +1,7 @@
 import LineTable from "./LineTable/LineTable";
 import ChangeViewBtn from "./ChangeViewBtn/ChangeViewBtn";
 import EditEnableBtn from "./EditEnableBtn/EditEnableBtn";
-import LineDetails from "./LineDetails/LineDetails";
+import LineOptions from "./LineOptions/LineOptions";
 //css
 import classes from "./Sidebar.module.css";
 
@@ -26,7 +26,7 @@ const Sidebar = () => {
       {mainViewMode === "plot" && (
         <>
           <LineTable />
-          <LineDetails />
+          <LineOptions />
         </>
       )}
     </div>

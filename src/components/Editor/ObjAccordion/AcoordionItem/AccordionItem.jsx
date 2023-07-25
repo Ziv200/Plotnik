@@ -22,10 +22,15 @@ const dummyObject = {
   group: null,
 };
 const AccordionItem = ({ obj = dummyObject }) => {
+  //overmind
   const actions = useActions();
+  //handleAddItem
+  const handleAddItem = (obj) => {
+    actions.addCanvasObject(obj);
+  };
   return (
     <div className={classes.icon}>
-      <div onClick={() => actions.addCanvasObject(obj)} className={classes.iconimgwrap}>
+      <div onClick={() => handleAddItem(obj)} className={classes.iconimgwrap}>
         <img src={obj.icon}></img>
       </div>
       <div className={classes.label}>{obj.name}</div>

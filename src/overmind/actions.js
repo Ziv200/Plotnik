@@ -17,7 +17,6 @@ export const updateProjSettings = ({ state }, { key, value }) => {
 
 export const setSelectedObj = ({ state }, obj) => {
   state.editPage.selectedObj = { ...obj };
-  console.log(state.editPage.selectedObj);
 };
 
 export const editEnableToggle = ({ state }) => {
@@ -34,6 +33,8 @@ export const addCanvasObject = ({ state }, obj) => {
   obj.id = uuidv4();
   const list = state.editPage.lineList[`${obj.type}`];
   //find the last patch number
+  const maxInputNum = Math.max(...list.map((input) => input.patchNo), 0);
+  obj.patchNo = maxInputNum + 1;
   list.push(obj);
 };
 
@@ -43,4 +44,9 @@ export const updatePostionAfterDrag = ({ state }, { obj, pos }) => {
   if (item) {
     item.canvaspos = { x: pos.x, y: pos.y };
   }
+};
+
+//util func
+const sortList = (list) => {
+  return;
 };
