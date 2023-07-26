@@ -4,6 +4,9 @@ import { createStateHook, createActionsHook, createEffectsHook, createReactionHo
 export const config = {
   state,
   actions,
+  devtools: {
+    port: 3031,
+  },
 };
 
 export const useAppState = createStateHook();
