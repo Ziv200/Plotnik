@@ -3,3 +3,7 @@
   justify-content: end;
   margin-bottom: 5px;
 }
+.smallbtn {
+  padding-block: 0.1rem;
+  border-radius: 0;
+}

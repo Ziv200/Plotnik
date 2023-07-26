@@ -1,0 +1,22 @@
+.expandlistbtns {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 5px;
+}
+.smallbtn {
+  padding-block: 0.1rem;
+  border-radius: 0;
+}
+
+.renumberEnabled {
+  padding-block: 0.1rem;
+  border-radius: 0;
+  background-color: green;
+}
+.renumberEnabled:hover {
+  background-color: green;
+}
+.renumberDisabled {
+  padding-block: 0.1rem;
+  border-radius: 0;
+}

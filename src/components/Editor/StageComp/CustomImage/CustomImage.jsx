@@ -3,6 +3,7 @@ import useImage from "use-image";
 import { useAppState, useActions } from "../../../../overmind";
 //css
 import classes from "./CustomImage.module.css";
+import { sortList } from "../../../../overmind/actions";
 
 const CustomImage = ({ data }) => {
   //overmind
@@ -27,6 +28,13 @@ const CustomImage = ({ data }) => {
     actions.updatePostionAfterDrag({ obj: data, pos: endPosition });
   };
 
+  const handleDelete = (data) => {
+    actions.deleteCanvasObject(data);
+    if (state.editPage.isAutoRenumber) {
+      actions.sortList(`${data.type}`);
+    }
+  };
+
   //exctract image url
   const url = data.icon;
   const [image] = useImage(url);
@@ -39,12 +47,12 @@ const CustomImage = ({ data }) => {
       y={data.canvaspos.y}
       dragBoundFunc={dragBoundFunc}
       onDragEnd={handleDragEnd}>
-      <Image width={175} height={175} image={image} />
-      {data.showPatchNo && <Text x={30} y={165} fontSize={18} fontStyle='bold' text={`${data.patchNo}.` || ""} />}
-      {data.showLabel && <Text x={60} y={165} fontSize={18} text={data.name} />}
+      <Image width={150} height={150} image={image} />
+      {data.showPatchNo && <Text x={20} y={150} fontSize={18} fontStyle='bold' text={`${data.patchNo}.` || ""} />}
+      {data.showLabel && <Text x={50} y={150} fontSize={18} text={data.name} />}
       {showEditHandle && (
         <Text
-          onClick={() => actions.deleteCanvasObject(data)}
+          onClick={() => handleDelete(data)}
           className={classes.deletexbtn}
           id={`obj_${data.id}_remove`}
           fontSize={30}

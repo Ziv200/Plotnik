@@ -46,7 +46,13 @@ export const updatePostionAfterDrag = ({ state }, { obj, pos }) => {
   }
 };
 
-//util func
-const sortList = (list) => {
-  return;
+export const toggleAutoRenumber = ({ state }) => {
+  state.editPage.isAutoRenumber = !state.editPage.isAutoRenumber;
+};
+
+export const sortList = ({ state }, type) => {
+  const list = state.editPage.lineList[`${type}`];
+  list.forEach((input, index) => {
+    input.patchNo = index + 1; // Index starts from 0, so we add 1 to make it start from 1
+  });
 };

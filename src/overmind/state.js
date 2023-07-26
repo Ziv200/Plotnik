@@ -10,6 +10,7 @@ export const state = {
     infoLineData: null,
     mainViewMode: "plot",
     projSettingsShow: false,
+    isAutoRenumber: true,
     projSettings: {
       projName: "Untitled",
       artistName: "",
