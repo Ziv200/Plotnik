@@ -23,6 +23,10 @@ export const editEnableToggle = ({ state }) => {
   state.editPage.editEnable = !state.editPage.editEnable;
 };
 
+export const toggleAutoRenumber = ({ state }) => {
+  state.editPage.isAutoRenumber = !state.editPage.isAutoRenumber;
+};
+
 //canvas object functions
 export const deleteCanvasObject = ({ state }, obj) => {
   const list = state.editPage.lineList[`${obj.type}`];
@@ -45,11 +49,14 @@ export const updatePostionAfterDrag = ({ state }, { obj, pos }) => {
     item.canvaspos = { x: pos.x, y: pos.y };
   }
 };
-
-export const toggleAutoRenumber = ({ state }) => {
-  state.editPage.isAutoRenumber = !state.editPage.isAutoRenumber;
+export const toggleObjPropety = ({ state }, { obj, propety }) => {
+  const data = state.editPage.lineList[`${obj.type}`];
+  const item = data.find((item) => item.id === obj.id);
+  const bool = item[`${propety}`];
+  item[`${propety}`] = !bool;
 };
 
+//list function
 export const sortList = ({ state }, type) => {
   const list = state.editPage.lineList[`${type}`];
   list.forEach((input, index) => {

@@ -12,4 +12,5 @@
 .table {
   overflow: scroll;
   block-size: 45vh;
+  cursor: pointer;
 }
