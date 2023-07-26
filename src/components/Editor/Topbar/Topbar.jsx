@@ -16,6 +16,14 @@ const Topbar = () => {
   //overmind
   const state = useAppState();
   const actions = useActions();
+  const selectedObj = state.editPage.selectedObj;
+
+  const handleDeleteObject = () => {
+    actions.deleteCanvasObject(selectedObj);
+    if (state.editPage.isAutoRenumber) {
+      actions.sortList(selectedObj.type);
+    }
+  };
 
   //fake profile image
   const profileImage = "src/images/profile.jpeg";
@@ -39,13 +47,11 @@ const Topbar = () => {
               Share <BsShareFill className='ms-2' />
             </NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title='Add' id='menuitem-add'>
-            <NavDropdown.Item>Instrument</NavDropdown.Item>
-            <NavDropdown.Item>Text</NavDropdown.Item>
-          </NavDropdown>
           <NavDropdown title='Selected' id='menuitem-Selected'>
             <NavDropdown.Item>Duplicate</NavDropdown.Item>
-            <NavDropdown.Item style={{ color: "red" }}>Delete</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => handleDeleteObject()} style={{ color: "red" }}>
+              Delete
+            </NavDropdown.Item>
           </NavDropdown>
         </Nav>
         <Nav id='right-nav'>
