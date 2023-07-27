@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Nav from "react-bootstrap/Nav";
+import CellToForm from "../../../UI/CellToForm/CellToForm";
 //css
 import classes from "./LineTable.module.css";
 //overmind
@@ -62,7 +63,7 @@ const LineTable = () => {
                   <td>
                     <strong>{input.patchNo}</strong>
                   </td>
-                  <td>{input.name}</td>
+                  <CellToForm obj={input} propety='name' />
                   <td>{input.mic}</td>
                 </tr>
               ))}

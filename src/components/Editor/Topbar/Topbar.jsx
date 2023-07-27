@@ -33,7 +33,6 @@ const Topbar = () => {
       <Container fluid>
         <Navbar.Brand className='logo'>
           Plotnik
-          {/* <span className='projectName'>{state.editPage.projSettings.projName}</span> */}
           <ProjectName />
         </Navbar.Brand>
         <Nav className='me-auto' id='left-nav'>

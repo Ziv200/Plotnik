@@ -56,6 +56,11 @@ export const toggleObjPropety = ({ state }, { obj, propety }) => {
   item[`${propety}`] = !bool;
 };
 
+export const changeObjPropety = ({ state }, { propety, value, obj }) => {
+  const item = state.editPage.lineList[`${obj.type}`].find((item) => item.id === obj.id);
+  item[`${propety}`] = value;
+};
+
 //list function
 export const sortList = ({ state }, type) => {
   const list = state.editPage.lineList[`${type}`];
