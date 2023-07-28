@@ -4,3 +4,7 @@
   outline: none;
   margin: 0;
 }
+
+.td {
+  border-left-width: 3px;
+}

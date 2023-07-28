@@ -71,7 +71,7 @@ const CellToForm = ({ propety, obj }) => {
   //render
   if (isEdit) {
     return (
-      <td className={classes.td}>
+      <td className={classes.td} style={{ width: `${cellWidth}px` }}>
         <input
           maxLength={15}
           value={item[`${propety}`]}
@@ -86,7 +86,7 @@ const CellToForm = ({ propety, obj }) => {
     );
   } else {
     return (
-      <td onDoubleClick={handleDoubleClick} ref={cellRef}>
+      <td onClick={handleDoubleClick} ref={cellRef}>
         {item[`${propety}`]}
       </td>
     );
