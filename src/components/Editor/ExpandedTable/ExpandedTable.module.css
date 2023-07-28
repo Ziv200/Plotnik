@@ -1,4 +1,15 @@
-.tablewrap {
-  max-height: 75vh;
-  overflow: scroll;
+.table {
+  max-height: 50vh;
+  overflow-y: scroll;
+  cursor: pointer;
+}
+
+.smallWarning {
+  color: red;
+}
+
+.warningWrap {
+  display: flex;
+  justify-content: center;
+  padding-block: 5px;
 }

@@ -39,7 +39,7 @@ const LineTable = () => {
       </Nav>
       {state.editPage.editEnable && (
         <div className={classes.warningWrap}>
-          <small className={classes.smallWarning}>Edit Mode:double click a cell to edit</small>
+          <small className={classes.smallWarning}>Edit Mode: Click Cell To Edit</small>
         </div>
       )}
       <div className={classes.table}>
@@ -57,7 +57,7 @@ const LineTable = () => {
             {tabSel === "inputs" &&
               inputs.map((input) => (
                 <tr onClick={() => actions.setSelectedObj(input)} key={input.id}>
-                  <td className={classes.tdflex}>
+                  <td>
                     <strong>{input.patchNo}</strong>
                   </td>
                   <CellToForm obj={input} propety='name' />

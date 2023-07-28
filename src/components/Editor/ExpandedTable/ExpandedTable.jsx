@@ -2,9 +2,9 @@
 import { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Nav from "react-bootstrap/Nav";
+import CellToForm from "../../UI/CellToForm/CellToForm";
 //css
 import classes from "./ExpandedTable.module.css";
-
 //overmind
 import { useActions, useAppState } from "../../../overmind";
 
@@ -17,17 +17,14 @@ const ExpandedTable = () => {
   const outputs = state.editPage.lineList.outputs;
   const groups = state.editPage.lineList.groups;
   //
-  const findGroupColor = (input, groups) => {
-    if (input.group !== null) {
-      const color = groups.filter((group) => group.id === input.group)[0].color;
-      //console.log(color[0].color)
-      return { backgroundColor: `${color}` };
-    }
-    return {};
-  };
 
   return (
     <div>
+      {state.editPage.editEnable && (
+        <div className={classes.warningWrap}>
+          <small className={classes.smallWarning}>Edit Mode: Click Cell To Edit</small>
+        </div>
+      )}
       <Nav variant='tabs' defaultActiveKey='Inputs'>
         <Nav.Item>
           <Nav.Link eventKey='Inputs' onClick={() => setTabSel("inputs")}>
@@ -55,7 +52,7 @@ const ExpandedTable = () => {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <div className={classes.tablewrap}>
+      <div className={classes.table}>
         {tabSel === "inputs" && (
           <Table striped bordered hover>
             <thead>
@@ -75,16 +72,16 @@ const ExpandedTable = () => {
             <tbody>
               {inputs.map((input) => (
                 <tr onClick={() => actions.setSelectedObj(input)} key={input.id}>
-                  <td style={findGroupColor(input, groups)}>
+                  <td>
                     <strong>{input.patchNo}</strong>
                   </td>
-                  <td>{input.name}</td>
-                  <td>{input.mic}</td>
-                  <td>{input.stand}</td>
-                  <td>{input.pos}</td>
-                  <td>{input.stagebox}</td>
-                  <td>{input.comment}</td>
-                  <td style={findGroupColor(input, groups)}>{input.group}</td>
+                  <CellToForm obj={input} propety='name' />
+                  <CellToForm obj={input} propety='mic' />
+                  <CellToForm obj={input} propety='stand' />
+                  <CellToForm obj={input} propety='pos' />
+                  <CellToForm obj={input} propety='stagebox' />
+                  <CellToForm obj={input} propety='comment' />
+                  <CellToForm obj={input} propety='group' />
                 </tr>
               ))}
             </tbody>

@@ -4,10 +4,8 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { BsShareFill, BsFillGearFill } from "react-icons/bs";
 import ProjectName from "./ProjectName/ProjectName";
-import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
 //overmind
-import { useAppState, useActions, useEffects, useReaction } from "../../../overmind";
+import { useAppState, useActions } from "../../../overmind";
 
 //css
 import "./Topbar.css";
@@ -17,7 +15,7 @@ const Topbar = () => {
   const state = useAppState();
   const actions = useActions();
   const selectedObj = state.editPage.selectedObj;
-
+  const editEnable = state.editPage.editEnable;
   const handleDeleteObject = () => {
     actions.deleteCanvasObject(selectedObj);
     if (state.editPage.isAutoRenumber) {
@@ -41,12 +39,11 @@ const Topbar = () => {
             <NavDropdown.Item>Make Duplicate</NavDropdown.Item>
             <NavDropdown.Item style={{ color: "red" }}>Delete Project</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item>Export PDF</NavDropdown.Item>
             <NavDropdown.Item>
               Share <BsShareFill className='ms-2' />
             </NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title='Selected' id='menuitem-Selected'>
+          <NavDropdown disabled={editEnable && selectedObj ? false : true} title='Selected' id='menuitem-Selected'>
             <NavDropdown.Item>Duplicate</NavDropdown.Item>
             <NavDropdown.Item onClick={() => handleDeleteObject()} style={{ color: "red" }}>
               Delete

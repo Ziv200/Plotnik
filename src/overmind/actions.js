@@ -31,6 +31,7 @@ export const toggleAutoRenumber = ({ state }) => {
 export const deleteCanvasObject = ({ state }, obj) => {
   const list = state.editPage.lineList[`${obj.type}`];
   state.editPage.lineList[`${obj.type}`] = list.filter((input) => input.id !== obj.id);
+  state.editPage.selectedObj = null;
 };
 
 export const addCanvasObject = ({ state }, obj) => {
