@@ -17,14 +17,6 @@ const LineTable = () => {
   const groups = state.editPage.lineList.groups;
   //
   const [tabSel, setTabSel] = useState("inputs");
-  //
-  const findGroupColor = (input, groups) => {
-    if (input.group !== null) {
-      const color = groups.filter((group) => group.id === input.group)[0].color;
-      return { backgroundColor: `${color}` };
-    }
-    return {};
-  };
 
   return (
     <>
@@ -45,6 +37,11 @@ const LineTable = () => {
           </Nav.Link>
         </Nav.Item>
       </Nav>
+      {state.editPage.editEnable && (
+        <div className={classes.warningWrap}>
+          <small className={classes.smallWarning}>Edit Mode:double click a cell to edit</small>
+        </div>
+      )}
       <div className={classes.table}>
         <Table striped bordered hover>
           <thead>
@@ -60,11 +57,11 @@ const LineTable = () => {
             {tabSel === "inputs" &&
               inputs.map((input) => (
                 <tr onClick={() => actions.setSelectedObj(input)} key={input.id}>
-                  <td>
+                  <td className={classes.tdflex}>
                     <strong>{input.patchNo}</strong>
                   </td>
                   <CellToForm obj={input} propety='name' />
-                  <td>{input.mic}</td>
+                  <CellToForm obj={input} propety='mic' />
                 </tr>
               ))}
             {tabSel === "outputs" &&

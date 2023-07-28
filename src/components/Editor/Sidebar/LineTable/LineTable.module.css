@@ -14,3 +14,17 @@
   block-size: 45vh;
   cursor: pointer;
 }
+
+.smallWarning {
+  color: red;
+}
+
+.warningWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.tdflex {
+  display: flex;
+  justify-content: space-around;
+}

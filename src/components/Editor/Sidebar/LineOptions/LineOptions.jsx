@@ -17,6 +17,9 @@ const LineOptions = () => {
       {selectedObj && (
         <>
           <Form>
+            <CheckBoxWithLabel label='Show Icon' propety='hasIcon' />
+          </Form>
+          <Form>
             <CheckBoxWithLabel label='Show Label' propety='showLabel' />
           </Form>
           <Form>

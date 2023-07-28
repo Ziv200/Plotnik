@@ -2,17 +2,5 @@
   border: none;
   background: transparent;
   outline: none;
-  width: 100%;
   margin: 0;
-  padding: 0;
-}
-
-.form {
-  position: relative;
-  margin: 0;
-}
-
-.td {
-  display: flex;
-  justify-content: space-between;
 }
