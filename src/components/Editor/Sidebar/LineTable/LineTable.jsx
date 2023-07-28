@@ -57,9 +57,10 @@ const LineTable = () => {
             {tabSel === "inputs" &&
               inputs.map((input) => (
                 <tr onClick={() => actions.setSelectedObj(input)} key={input.id}>
-                  <td>
+                  {/* <td>
                     <strong>{input.patchNo}</strong>
-                  </td>
+                  </td> */}
+                  <CellToForm obj={input} propety='patchNo' />
                   <CellToForm obj={input} propety='name' />
                   <CellToForm obj={input} propety='mic' />
                 </tr>

@@ -63,7 +63,7 @@ export const changeObjPropety = ({ state }, { propety, value, obj }) => {
 };
 
 //list function
-export const sortList = ({ state }, type) => {
+export const renumberList = ({ state }, type) => {
   const list = state.editPage.lineList[`${type}`];
   list.forEach((input, index) => {
     input.patchNo = index + 1; // Index starts from 0, so we add 1 to make it start from 1

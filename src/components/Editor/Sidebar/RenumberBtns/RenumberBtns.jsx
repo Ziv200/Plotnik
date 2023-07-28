@@ -15,7 +15,7 @@ const RenumberBtns = () => {
         className={isAutoRenumber ? classes.renumberEnabled : classes.renumberDisabled}>
         Auto
       </Button>
-      <Button variant='secondary' className={classes.smallbtn} onClick={() => actions.sortList("inputs")}>
+      <Button variant='secondary' className={classes.smallbtn} onClick={() => actions.renumberList("inputs")}>
         Renumber
       </Button>
     </div>

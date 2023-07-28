@@ -3,7 +3,6 @@ import useImage from "use-image";
 import { useAppState, useActions } from "../../../../overmind";
 //css
 import classes from "./CustomImage.module.css";
-import { sortList } from "../../../../overmind/actions";
 
 const CustomImage = ({ data }) => {
   //overmind
@@ -31,7 +30,7 @@ const CustomImage = ({ data }) => {
   const handleDelete = (data) => {
     actions.deleteCanvasObject(data);
     if (state.editPage.isAutoRenumber) {
-      actions.sortList(`${data.type}`);
+      actions.renumberList(`${data.type}`);
     }
   };
 

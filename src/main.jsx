@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import { createOvermind } from "overmind";
 import { Provider } from "overmind-react";
 import { config } from "./overmind";
-const overmind = createOvermind(config, { devtools: "http://0.0.0.0:3031" });
+const overmind = createOvermind(config, { devtools: "localhost:3031" });
 //
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

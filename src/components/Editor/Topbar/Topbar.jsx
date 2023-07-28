@@ -19,7 +19,7 @@ const Topbar = () => {
   const handleDeleteObject = () => {
     actions.deleteCanvasObject(selectedObj);
     if (state.editPage.isAutoRenumber) {
-      actions.sortList(selectedObj.type);
+      actions.renumberList(selectedObj.type);
     }
   };
 
