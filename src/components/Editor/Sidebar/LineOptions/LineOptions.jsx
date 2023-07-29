@@ -13,7 +13,7 @@ const LineOptions = () => {
     <div className={classes.detailswrap}>
       <h5>Line Options:</h5>
       {/* if not null show Obj Name */}
-      {<p className={classes.lineName}>{selectedObj ? `${selectedObj.name}` : ""}</p>}
+      {<p className={classes.lineName}>{selectedObj && `${selectedObj.name} | ${selectedObj.type}`}</p>}
       {selectedObj && (
         <>
           <Form>
