@@ -12,15 +12,19 @@ const StageComp = () => {
   const title = `${state.editPage.projSettings.projName}`;
   const copyright = "Created With Plotnik.com - By Ilan Ziv";
   const inputs = state.editPage.lineList.inputs;
+  const data = state.editPage.lineList;
   return (
     <Stage className={classes.stage} width={1123} height={794}>
       <Layer>
         <Text x={20} y={20} fontStyle='bold' fontSize={20} text={title} />
-        {inputs
-          .filter((input) => input.hasIcon)
-          .map((input) => {
-            return <CustomImage key={input.id} data={input} />;
-          })}
+        {Object.values(data).map((array) =>
+          array
+            .filter((item) => item.hasIcon)
+            .map((item) => {
+              return <CustomImage key={item.id} data={item} />;
+            })
+        )}
+
         <Text x={870} y={770} fontStyle='bold' fontSize={12} text={copyright} />
       </Layer>
     </Stage>
