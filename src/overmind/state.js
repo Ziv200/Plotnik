@@ -9,7 +9,6 @@ export const state = {
     tableTab: "inputs",
     showProjSettings: false,
     selectedObj: null,
-    infoLineData: null,
     mainViewMode: "plot",
     projSettings: {
       projName: "Untitled",

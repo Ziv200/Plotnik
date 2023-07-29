@@ -20,6 +20,7 @@ const InfoLine = () => {
       return "-";
     }
   };
+
   if (selectedObj && selectedObj.type === "inputs") {
     return (
       <div className={classes.infoline}>
