@@ -72,7 +72,7 @@ const ExpandedTable = () => {
             <tbody>
               {inputs.map((input) => (
                 <tr
-                  className={selectedObj && input.id === selectedObj.id && classes.trselected}
+                  className={selectedObj && input.id === selectedObj.id ? classes.trselected : ""}
                   onClick={() => actions.setSelectedObj(input)}
                   key={input.id}>
                   <td>
@@ -107,7 +107,7 @@ const ExpandedTable = () => {
             <tbody>
               {outputs.map((output) => (
                 <tr
-                  className={selectedObj && input.id === selectedObj.id && classes.trselected}
+                  className={selectedObj && output.id === selectedObj.id ? classes.trselected : ""}
                   onClick={() => actions.setSelectedObj(output)}
                   key={output.id}>
                   <CellToForm obj={output} propety='patchNo' />

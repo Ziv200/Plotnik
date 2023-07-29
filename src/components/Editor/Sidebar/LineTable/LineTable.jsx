@@ -59,7 +59,7 @@ const LineTable = () => {
             {tabSel === "inputs" &&
               inputs.map((input) => (
                 <tr
-                  className={selectedObj && input.id === selectedObj.id && classes.trselected}
+                  className={selectedObj && input.id === selectedObj.id ? classes.trselected : ""}
                   onClick={() => actions.setSelectedObj(input)}
                   key={input.id}>
                   <CellToForm obj={input} propety='patchNo' />
@@ -69,7 +69,10 @@ const LineTable = () => {
               ))}
             {tabSel === "outputs" &&
               outputs.map((output) => (
-                <tr className={selectedObj && output.id === selectedObj.id && classes.trselected} key={output.id}>
+                <tr
+                  className={selectedObj && output.id === selectedObj.id ? classes.trselected : ""}
+                  key={output.id}
+                  onClick={() => actions.setSelectedObj(output)}>
                   <CellToForm obj={output} propety='patchNo' />
                   <CellToForm obj={output} propety='name' />
                   <CellToForm obj={output} propety='device' />

@@ -46,9 +46,12 @@ const CustomImage = ({ data }) => {
       y={data.canvaspos.y}
       dragBoundFunc={dragBoundFunc}
       onDragEnd={handleDragEnd}>
+      {/* ICON */}
       <Image width={150} height={150} image={image} />
       {data.showPatchNo && <Text x={20} y={150} fontSize={18} fontStyle='bold' text={`${data.patchNo}.` || ""} />}
+      {/* LABEL */}
       {data.showLabel && <Text x={50} y={150} fontSize={18} text={data.name} />}
+      {/* X sign */}
       {showEditHandle && (
         <Text
           onClick={() => handleDelete(data)}
