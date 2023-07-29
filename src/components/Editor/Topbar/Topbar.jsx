@@ -37,7 +37,7 @@ const Topbar = () => {
   return (
     <Navbar className='bg-body-tertiary'>
       <Container fluid>
-        <Navbar.Brand className='logo'>
+        <Navbar.Brand onClick={() => actions.setMainViewMode("plot")} className='logo'>
           Plotnik
           <ProjectName />
         </Navbar.Brand>
