@@ -59,6 +59,9 @@ const Topbar = () => {
           </NavDropdown>
         </Nav>
         <Nav id='right-nav'>
+          <Nav.Item>
+            <Nav.Link onClick={() => actions.setMainViewMode("help")}>Help</Nav.Link>
+          </Nav.Item>
           <NavDropdown
             drop='start'
             id='menuitem-projsettings'
