@@ -94,6 +94,9 @@ export const changeObjPropety = ({ state }, { propety, value, obj }) => {
       return;
     }
   }
+  if (value === "") {
+    return;
+  }
   item[`${propety}`] = value;
   //after change set selected obj the last changed item
   state.editPage.selectedObj = { ...item };

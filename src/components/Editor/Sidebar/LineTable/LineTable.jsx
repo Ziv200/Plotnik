@@ -15,6 +15,7 @@ const LineTable = () => {
   const inputs = state.editPage.lineList.inputs;
   const outputs = state.editPage.lineList.outputs;
   const groups = state.editPage.lineList.groups;
+  const selectedObj = state.editPage.selectedObj;
   //tabs
   const tabSel = state.editPage.tableTab;
 
@@ -57,7 +58,10 @@ const LineTable = () => {
           <tbody>
             {tabSel === "inputs" &&
               inputs.map((input) => (
-                <tr onClick={() => actions.setSelectedObj(input)} key={input.id}>
+                <tr
+                  className={selectedObj && input.id === selectedObj.id && classes.trselected}
+                  onClick={() => actions.setSelectedObj(input)}
+                  key={input.id}>
                   <CellToForm obj={input} propety='patchNo' />
                   <CellToForm obj={input} propety='name' />
                   <CellToForm obj={input} propety='mic' />
@@ -65,7 +69,7 @@ const LineTable = () => {
               ))}
             {tabSel === "outputs" &&
               outputs.map((output) => (
-                <tr key={output.id}>
+                <tr className={selectedObj && output.id === selectedObj.id && classes.trselected} key={output.id}>
                   <CellToForm obj={output} propety='patchNo' />
                   <CellToForm obj={output} propety='name' />
                   <CellToForm obj={output} propety='device' />

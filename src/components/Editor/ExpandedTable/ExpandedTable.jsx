@@ -1,5 +1,4 @@
 // imports
-import { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Nav from "react-bootstrap/Nav";
 import CellToForm from "../../UI/CellToForm/CellToForm";
@@ -103,15 +102,13 @@ const ExpandedTable = () => {
             </thead>
             <tbody>
               {outputs.map((output) => (
-                <tr key={output.id}>
-                  <td>
-                    <strong>{output.id}</strong>
-                  </td>
-                  <td>{output.name}</td>
-                  <td>{output.device}</td>
-                  <td>{output.pos}</td>
-                  <td>{output.stagebox}</td>
-                  <td>{output.comment}</td>
+                <tr onClick={() => actions.setSelectedObj(output)} key={output.id}>
+                  <CellToForm obj={output} propety='patchNo' />
+                  <CellToForm obj={output} propety='name' />
+                  <CellToForm obj={output} propety='device' />
+                  <CellToForm obj={output} propety='pos' />
+                  <CellToForm obj={output} propety='stagebox' />
+                  <CellToForm obj={output} propety='comment' />
                 </tr>
               ))}
             </tbody>

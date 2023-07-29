@@ -23,3 +23,8 @@
   display: flex;
   justify-content: center;
 }
+
+.trselected {
+  border-left: 1px solid wheat;
+  border-bottom: 1px solid wheat;
+}
