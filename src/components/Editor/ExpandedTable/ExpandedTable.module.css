@@ -13,3 +13,8 @@
   justify-content: center;
   padding-block: 5px;
 }
+
+.trselected {
+  border-left: 1px solid wheat;
+  border-bottom: 1px solid wheat;
+}

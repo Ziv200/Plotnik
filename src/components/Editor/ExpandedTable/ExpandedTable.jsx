@@ -14,6 +14,7 @@ const ExpandedTable = () => {
   const inputs = state.editPage.lineList.inputs;
   const outputs = state.editPage.lineList.outputs;
   const groups = state.editPage.lineList.groups;
+  const selectedObj = state.editPage.selectedObj;
   //tab selection
   const tabSel = state.editPage.tableTab;
 
@@ -70,7 +71,10 @@ const ExpandedTable = () => {
             </thead>
             <tbody>
               {inputs.map((input) => (
-                <tr onClick={() => actions.setSelectedObj(input)} key={input.id}>
+                <tr
+                  className={selectedObj && input.id === selectedObj.id && classes.trselected}
+                  onClick={() => actions.setSelectedObj(input)}
+                  key={input.id}>
                   <td>
                     <strong>{input.patchNo}</strong>
                   </td>
@@ -102,7 +106,10 @@ const ExpandedTable = () => {
             </thead>
             <tbody>
               {outputs.map((output) => (
-                <tr onClick={() => actions.setSelectedObj(output)} key={output.id}>
+                <tr
+                  className={selectedObj && input.id === selectedObj.id && classes.trselected}
+                  onClick={() => actions.setSelectedObj(output)}
+                  key={output.id}>
                   <CellToForm obj={output} propety='patchNo' />
                   <CellToForm obj={output} propety='name' />
                   <CellToForm obj={output} propety='device' />
