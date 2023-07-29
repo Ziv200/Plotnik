@@ -1,11 +1,11 @@
 import classes from "./ProjectName.module.css";
 import { useAppState, useActions } from "../../../../overmind";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { BsCheckLg, BsPencilFill } from "react-icons/bs";
 
 const ProjectName = () => {
   //ref to form
-  const formRef = useRef();
+  const inputRef = useRef();
   //overmind
   const state = useAppState();
   const actions = useActions();
@@ -35,13 +35,21 @@ const ProjectName = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  //===============================
+  useEffect(() => {
+    // Auto focus the input element when it shows (isEdit becomes true)
+    if (isEdit) {
+      inputRef.current.focus();
+    }
+  }, [isEdit]);
 
   //
   if (isEdit) {
     return (
       <span>
-        <form onSubmit={handleSubmit} ref={formRef} className={classes.form}>
+        <form onSubmit={handleSubmit} className={classes.form}>
           <input
+            ref={inputRef}
             name='name'
             maxLength={20}
             onChange={handleChange}
