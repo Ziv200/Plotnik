@@ -16,6 +16,8 @@ const CellToForm = ({ propety, obj }) => {
 
   //is form edit mode
   const [isEdit, setIsEdit] = useState(false);
+
+  //==========================
   //cell width logic
   const [cellWidth, setCellWidth] = useState(0);
   const cellRef = useRef(null);
@@ -25,6 +27,7 @@ const CellToForm = ({ propety, obj }) => {
       setCellWidth(cellRef.current.offsetWidth);
     }
   }, []);
+  //==========================
 
   //autofocus
   const input = useRef();
@@ -34,10 +37,11 @@ const CellToForm = ({ propety, obj }) => {
       input.current.focus();
     }
   }, [isEdit]);
+  //==========================
 
   //change state as typing
-  const handleChange = (e) => {
-    const newvalue = e.target.value;
+  const setNewValue = () => {
+    const newvalue = input.current.value;
     actions.changeObjPropety({ propety: propety, value: newvalue, obj: obj });
   };
 
@@ -52,6 +56,7 @@ const CellToForm = ({ propety, obj }) => {
   const handleKeyDownSubmit = (e) => {
     if (e.key === "Enter") {
       setIsEdit(false);
+      setNewValue(e);
       if (isAutoSort) {
         actions.sortList(item.type);
       }
@@ -67,6 +72,7 @@ const CellToForm = ({ propety, obj }) => {
       // Check if the click occurred outside the input element
       if (input.current && !input.current.contains(e.target)) {
         setIsEdit(false);
+        setNewValue();
         if (isAutoSort) {
           actions.sortList(item.type);
         }
@@ -88,8 +94,8 @@ const CellToForm = ({ propety, obj }) => {
       <td className={classes.td} style={{ width: `${cellWidth}px` }}>
         <input
           maxLength={15}
-          value={item[`${propety}`]}
-          onChange={handleChange}
+          placeholder={item[`${propety}`]}
+          // onChange={handleChange}
           onKeyDown={handleKeyDownSubmit}
           className={classes.input_text}
           type='text'

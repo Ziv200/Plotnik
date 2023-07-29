@@ -16,11 +16,19 @@ const Topbar = () => {
   const actions = useActions();
   const selectedObj = state.editPage.selectedObj;
   const editEnable = state.editPage.editEnable;
+  //delete selectedObj
   const handleDeleteObject = () => {
     actions.deleteCanvasObject(selectedObj);
     if (state.editPage.isAutoRenumber) {
       actions.renumberList(selectedObj.type);
     }
+  };
+  //duplicate selectedObj
+  const handleObjectDuplicate = () => {
+    const duplicatedObj = { ...selectedObj };
+    duplicatedObj.patchNo = "";
+    duplicatedObj.id = "";
+    actions.addCanvasObject(duplicatedObj);
   };
 
   //fake profile image
@@ -44,7 +52,7 @@ const Topbar = () => {
             </NavDropdown.Item>
           </NavDropdown>
           <NavDropdown disabled={editEnable && selectedObj ? false : true} title='Selected' id='menuitem-Selected'>
-            <NavDropdown.Item>Duplicate</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => handleObjectDuplicate()}>Duplicate</NavDropdown.Item>
             <NavDropdown.Item onClick={() => handleDeleteObject()} style={{ color: "red" }}>
               Delete
             </NavDropdown.Item>

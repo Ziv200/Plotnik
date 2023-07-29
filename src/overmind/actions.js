@@ -19,11 +19,12 @@ export const updateProjSettings = ({ state }, { key, value }) => {
 export const setTableTab = ({ state }, tab) => {
   state.editPage.tableTab = tab;
 };
+//=========================================================
 //set selected obj
 export const setSelectedObj = ({ state }, obj) => {
   state.editPage.selectedObj = { ...obj };
 };
-
+//=========================================================
 //edit functions
 export const editEnableToggle = ({ state }) => {
   state.editPage.editEnable = !state.editPage.editEnable;
@@ -35,7 +36,7 @@ export const toggleAutoRenumber = ({ state }) => {
 export const toggleAutoSort = ({ state }) => {
   state.editPage.isAutoSort = !state.editPage.isAutoSort;
 };
-
+//=========================================================
 //canvas object functions
 export const deleteCanvasObject = ({ state }, obj) => {
   const list = state.editPage.lineList[`${obj.type}`];
@@ -71,20 +72,25 @@ export const changeObjPropety = ({ state }, { propety, value, obj }) => {
   const searchPatchNo = (value, data) => {
     for (const i in data) {
       if (+data[i].patchNo === +value) {
-        console.log("Same");
+        return true;
       }
     }
   };
-
+  //get the line list and the item
   const data = state.editPage.lineList[`${obj.type}`];
   const item = state.editPage.lineList[`${obj.type}`].find((item) => item.id === obj.id);
+
   //if patchNo exsits dont assgin new value
   if (propety === "patchNo") {
-    searchPatchNo(value, data);
+    if (searchPatchNo(value, data)) {
+      return;
+    }
   }
   item[`${propety}`] = value;
+  state.editPage.selectedObj = { ...item };
 };
 
+//=========================================================
 //list function
 export const renumberList = ({ state }, type = state.editPage.tableTab) => {
   //if type not provided type set to selected object type
