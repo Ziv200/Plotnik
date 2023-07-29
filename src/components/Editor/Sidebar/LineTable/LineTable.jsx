@@ -51,8 +51,8 @@ const LineTable = () => {
                 <strong>#</strong>
               </th>
               <th>Name</th>
-              <th>Device</th>
               {tabSel === "inputs" && <th>Mic</th>}
+              {tabSel === "outputs" && <th>Device</th>}
             </tr>
           </thead>
           <tbody>
