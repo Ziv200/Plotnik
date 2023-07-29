@@ -1,4 +1,5 @@
 const objectList = {
+  //inputs
   mic_long: {
     type: "inputs",
     name: "Voc",
@@ -435,6 +436,24 @@ const objectList = {
       y: 250,
     },
     group: "",
+  },
+  //outputs
+  wedge: {
+    type: "outputs",
+    name: "Wedge",
+    device: "",
+    pos: "",
+    stagebox: "",
+    patchNo: "",
+    comment: "",
+    hasIcon: true,
+    showLabel: true,
+    showPatchNo: true,
+    icon: "src/images/icons/default.png",
+    canvaspos: {
+      x: 250,
+      y: 250,
+    },
   },
 };
 export default objectList;

@@ -3,7 +3,6 @@ import classes from "./CellToForm.module.css";
 
 import { useAppState, useActions } from "../../../overmind";
 import { useState, useRef, useEffect } from "react";
-import { sortList } from "../../../overmind/actions";
 
 const CellToForm = ({ propety, obj }) => {
   //overmind

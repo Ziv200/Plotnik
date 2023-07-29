@@ -63,6 +63,12 @@ const ObjAccordion = () => {
             <AccordionItem obj={objectList.mic_long} />
           </Accordion.Body>
         </Accordion.Item>
+        <Accordion.Item eventKey='Outputs'>
+          <Accordion.Header>Outputs</Accordion.Header>
+          <Accordion.Body className={classes.accordionbody}>
+            <AccordionItem obj={objectList.wedge} />
+          </Accordion.Body>
+        </Accordion.Item>
       </Accordion>
     </div>
   );

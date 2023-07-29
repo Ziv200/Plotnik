@@ -20,7 +20,7 @@ const LineTable = () => {
 
   return (
     <>
-      <Nav variant='tabs' defaultActiveKey={tabSel}>
+      <Nav variant='tabs' activeKey={tabSel}>
         <Nav.Item>
           <Nav.Link eventKey='inputs' onClick={() => actions.setTableTab("inputs")}>
             Inputs
@@ -50,6 +50,7 @@ const LineTable = () => {
                 <strong>#</strong>
               </th>
               <th>Name</th>
+              <th>Device</th>
               {tabSel === "inputs" && <th>Mic</th>}
             </tr>
           </thead>
@@ -65,10 +66,9 @@ const LineTable = () => {
             {tabSel === "outputs" &&
               outputs.map((output) => (
                 <tr key={output.id}>
-                  <td>
-                    <strong>{output.id}</strong>
-                  </td>
-                  <td>{output.name}</td>
+                  <CellToForm obj={output} propety='patchNo' />
+                  <CellToForm obj={output} propety='name' />
+                  <CellToForm obj={output} propety='device' />
                 </tr>
               ))}
             {tabSel === "groups" &&

@@ -44,13 +44,14 @@ export const deleteCanvasObject = ({ state }, obj) => {
   state.editPage.selectedObj = null;
 };
 
-export const addCanvasObject = ({ state }, obj) => {
+export const addCanvasObject = ({ state, actions }, obj) => {
   obj.id = uuidv4();
   const list = state.editPage.lineList[`${obj.type}`];
   //find the last patch number
   const maxInputNum = Math.max(...list.map((input) => input.patchNo), 0);
   obj.patchNo = maxInputNum + 1;
   list.push(obj);
+  actions.setTableTab(obj.type);
 };
 
 export const updatePostionAfterDrag = ({ state }, { obj, pos }) => {
@@ -82,11 +83,12 @@ export const changeObjPropety = ({ state }, { propety, value, obj }) => {
 
   //if patchNo exsits dont assgin new value
   if (propety === "patchNo") {
-    if (searchPatchNo(value, data) || value === 0 || isNaN(value)) {
+    if (searchPatchNo(value, data) || +value === 0 || isNaN(value)) {
       return;
     }
   }
   item[`${propety}`] = value;
+  //after change set selected obj the last changed item
   state.editPage.selectedObj = { ...item };
 };
 
