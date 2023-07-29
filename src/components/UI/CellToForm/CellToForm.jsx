@@ -3,12 +3,15 @@ import classes from "./CellToForm.module.css";
 
 import { useAppState, useActions } from "../../../overmind";
 import { useState, useRef, useEffect } from "react";
+import { sortList } from "../../../overmind/actions";
 
 const CellToForm = ({ propety, obj }) => {
   //overmind
   const state = useAppState();
   const actions = useActions();
   const globalEdit = state.editPage.editEnable;
+  const isAutoSort = state.editPage.isAutoSort;
+  const isAutoRenumber = state.editPage.isAutoRenumber;
   const item = state.editPage.lineList[`${obj.type}`].find((item) => item.id === obj.id);
 
   //is form edit mode
@@ -49,6 +52,12 @@ const CellToForm = ({ propety, obj }) => {
   const handleKeyDownSubmit = (e) => {
     if (e.key === "Enter") {
       setIsEdit(false);
+      if (isAutoSort) {
+        actions.sortList(item.type);
+      }
+      if (isAutoRenumber) {
+        actions.renumberList(item.type);
+      }
     }
   };
 
@@ -58,6 +67,12 @@ const CellToForm = ({ propety, obj }) => {
       // Check if the click occurred outside the input element
       if (input.current && !input.current.contains(e.target)) {
         setIsEdit(false);
+        if (isAutoSort) {
+          actions.sortList(item.type);
+        }
+        if (isAutoRenumber) {
+          actions.renumberList(item.type);
+        }
       }
     };
     document.addEventListener("mousedown", handleOutsideClick);

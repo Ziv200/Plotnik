@@ -15,24 +15,24 @@ const LineTable = () => {
   const inputs = state.editPage.lineList.inputs;
   const outputs = state.editPage.lineList.outputs;
   const groups = state.editPage.lineList.groups;
-  //
-  const [tabSel, setTabSel] = useState("inputs");
+  //tabs
+  const tabSel = state.editPage.tableTab;
 
   return (
     <>
-      <Nav variant='tabs' defaultActiveKey='Inputs'>
+      <Nav variant='tabs' defaultActiveKey={tabSel}>
         <Nav.Item>
-          <Nav.Link eventKey='Inputs' onClick={() => setTabSel("inputs")}>
+          <Nav.Link eventKey='inputs' onClick={() => actions.setTableTab("inputs")}>
             Inputs
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey='Outputs' onClick={() => setTabSel("outputs")}>
+          <Nav.Link eventKey='outputs' onClick={() => actions.setTableTab("outputs")}>
             Outputs
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey='Groups' onClick={() => setTabSel("groups")}>
+          <Nav.Link eventKey='groups' onClick={() => actions.setTableTab("groups")}>
             Groups
           </Nav.Link>
         </Nav.Item>
@@ -57,9 +57,6 @@ const LineTable = () => {
             {tabSel === "inputs" &&
               inputs.map((input) => (
                 <tr onClick={() => actions.setSelectedObj(input)} key={input.id}>
-                  {/* <td>
-                    <strong>{input.patchNo}</strong>
-                  </td> */}
                   <CellToForm obj={input} propety='patchNo' />
                   <CellToForm obj={input} propety='name' />
                   <CellToForm obj={input} propety='mic' />

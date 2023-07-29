@@ -9,14 +9,14 @@ import classes from "./ExpandedTable.module.css";
 import { useActions, useAppState } from "../../../overmind";
 
 const ExpandedTable = () => {
-  const [tabSel, setTabSel] = useState("inputs");
   //overmind
   const actions = useActions();
   const state = useAppState();
   const inputs = state.editPage.lineList.inputs;
   const outputs = state.editPage.lineList.outputs;
   const groups = state.editPage.lineList.groups;
-  //
+  //tab selection
+  const tabSel = state.editPage.tableTab;
 
   return (
     <div>
@@ -25,29 +25,29 @@ const ExpandedTable = () => {
           <small className={classes.smallWarning}>Edit Mode: Click Cell To Edit</small>
         </div>
       )}
-      <Nav variant='tabs' defaultActiveKey='Inputs'>
+      <Nav variant='tabs' defaultActiveKey={tabSel}>
         <Nav.Item>
-          <Nav.Link eventKey='Inputs' onClick={() => setTabSel("inputs")}>
+          <Nav.Link eventKey='inputs' onClick={() => actions.setTableTab("inputs")}>
             Inputs
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey='Outputs' onClick={() => setTabSel("outputs")}>
+          <Nav.Link eventKey='outputs' onClick={() => actions.setTableTab("outputs")}>
             Outputs
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey='Groups' onClick={() => setTabSel("groups")}>
+          <Nav.Link eventKey='groups' onClick={() => actions.setTableTab("groups")}>
             Groups
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey='test1' onClick={() => setTabSel("test1")}>
+          <Nav.Link eventKey='test1' onClick={() => actions.setTableTab("test1")}>
             test1
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey='test2' onClick={() => setTabSel("test2")}>
+          <Nav.Link eventKey='test2' onClick={() => actions.setTableTab("test2")}>
             test2
           </Nav.Link>
         </Nav.Item>

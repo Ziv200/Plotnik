@@ -1,7 +1,3 @@
-import inputs from "../assets/inputs";
-import outputs from "../assets/outputs";
-import groups from "../assets/groups";
-
 export const state = {
   editPage: {
     editEnable: false,
@@ -10,7 +6,9 @@ export const state = {
     infoLineData: null,
     mainViewMode: "plot",
     projSettingsShow: false,
-    isAutoRenumber: true,
+    isAutoRenumber: false,
+    isAutoSort: true,
+    tableTab: "inputs",
     projSettings: {
       projName: "Untitled",
       artistName: "",

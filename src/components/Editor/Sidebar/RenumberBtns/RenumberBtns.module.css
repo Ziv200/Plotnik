@@ -1,9 +1,10 @@
 .expandlistbtns {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   margin-bottom: 5px;
 }
-.smallbtn {
+
+.expandlistbtn {
   padding-block: 0.1rem;
   border-radius: 0;
 }
