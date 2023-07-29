@@ -11,7 +11,7 @@ const FollowSelectBtn = () => {
   return (
     <Button
       onClick={() => actions.toggleFollowSelect()}
-      className={FollowState ? classes.editEnabled : classes.editDisabled}
+      className={FollowState ? classes.followEnabled : classes.followDisabled}
       variant='secondary'>
       Follow Select
     </Button>

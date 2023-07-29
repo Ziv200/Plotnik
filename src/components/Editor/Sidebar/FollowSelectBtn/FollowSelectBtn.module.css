@@ -1,12 +1,12 @@
-.editEnabled {
+.followEnabled {
   padding-block: 0.1rem;
   border-radius: 0;
-  background-color: brown;
+  background-color: green;
 }
-.editEnabled:hover {
-  background-color: brown;
+.followEnabled:hover {
+  background-color: green;
 }
-.editDisabled {
+.followDisabled {
   padding-block: 0.1rem;
   border-radius: 0;
 }
