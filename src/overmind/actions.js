@@ -82,7 +82,7 @@ export const changeObjPropety = ({ state }, { propety, value, obj }) => {
 
   //if patchNo exsits dont assgin new value
   if (propety === "patchNo") {
-    if (searchPatchNo(value, data)) {
+    if (searchPatchNo(value, data) || value === 0 || isNaN(value)) {
       return;
     }
   }
