@@ -1,0 +1,12 @@
+.editEnabled {
+  padding-block: 0.1rem;
+  border-radius: 0;
+  background-color: brown;
+}
+.editEnabled:hover {
+  background-color: brown;
+}
+.editDisabled {
+  padding-block: 0.1rem;
+  border-radius: 0;
+}

@@ -3,6 +3,7 @@ import ChangeViewBtn from "./ChangeViewBtn/ChangeViewBtn";
 import EditEnableBtn from "./EditEnableBtn/EditEnableBtn";
 import LineOptions from "./LineOptions/LineOptions";
 import RenumberBtns from "./RenumberBtns/RenumberBtns";
+import FollowSelectBtn from "./FollowSelectBtn/FollowSelectBtn";
 //css
 import classes from "./Sidebar.module.css";
 
@@ -18,8 +19,11 @@ const Sidebar = () => {
   return (
     <div>
       <div className={classes.expandlistbtns}>
-        <ChangeViewBtn />
-        <EditEnableBtn />
+        <FollowSelectBtn />
+        <div>
+          <ChangeViewBtn />
+          <EditEnableBtn />
+        </div>
       </div>
       {mainViewMode === "plot" && (
         <>

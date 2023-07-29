@@ -21,8 +21,12 @@ export const setTableTab = ({ state }, tab) => {
 };
 //=========================================================
 //set selected obj
-export const setSelectedObj = ({ state }, obj) => {
+export const setSelectedObj = ({ state, actions }, obj) => {
   state.editPage.selectedObj = { ...obj };
+  //selecting an object change table tabs if FollowSelect is true
+  if (state.editPage.isFollowSelect) {
+    actions.setTableTab(obj.type);
+  }
 };
 //=========================================================
 //edit functions
@@ -35,6 +39,9 @@ export const toggleAutoRenumber = ({ state }) => {
 };
 export const toggleAutoSort = ({ state }) => {
   state.editPage.isAutoSort = !state.editPage.isAutoSort;
+};
+export const toggleFollowSelect = ({ state }) => {
+  state.editPage.isFollowSelect = !state.editPage.isFollowSelect;
 };
 //=========================================================
 //canvas object functions

@@ -4,6 +4,7 @@ export const state = {
     editEnable: false,
     isAutoRenumber: false,
     isAutoSort: true,
+    isFollowSelect: true,
     //UI
     tableTab: "inputs",
     showProjSettings: false,
