@@ -1,14 +1,15 @@
 export const state = {
   editPage: {
+    //global pref
     editEnable: false,
+    isAutoRenumber: false,
+    isAutoSort: true,
+    //UI
+    tableTab: "inputs",
     showProjSettings: false,
     selectedObj: null,
     infoLineData: null,
     mainViewMode: "plot",
-    projSettingsShow: false,
-    isAutoRenumber: false,
-    isAutoSort: true,
-    tableTab: "inputs",
     projSettings: {
       projName: "Untitled",
       artistName: "",

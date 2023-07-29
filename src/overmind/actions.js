@@ -5,10 +5,10 @@ export const setMainViewMode = ({ state }, viewMode) => {
 };
 //show/hide and update proj settings
 export const hideProjSettings = ({ state }) => {
-  state.editPage.projSettingsShow = false;
+  state.editPage.showProjSettings = false;
 };
 export const showProjSettings = ({ state }) => {
-  state.editPage.projSettingsShow = true;
+  state.editPage.showProjSettings = true;
 };
 
 export const updateProjSettings = ({ state }, { key, value }) => {

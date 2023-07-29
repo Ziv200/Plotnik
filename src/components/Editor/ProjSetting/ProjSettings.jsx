@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
@@ -24,7 +23,7 @@ function ProjSetting() {
 
   return (
     <>
-      <Modal onHide={actions.hideProjSettings} show={state.editPage.projSettingsShow} backdrop='true' keyboard={false}>
+      <Modal onHide={actions.hideProjSettings} show={state.editPage.showProjSettings} backdrop='true' keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title>Project Settings</Modal.Title>
         </Modal.Header>
