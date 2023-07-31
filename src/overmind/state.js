@@ -10,12 +10,14 @@ export const state = {
     showProjSettings: false,
     selectedObj: null,
     mainViewMode: "plot",
+    //proejct settings
     projSettings: {
       projName: "Untitled",
       artistName: "",
       designerName: "",
       comment: "",
     },
+    //plot data
     lineList: {
       inputs: [],
       outputs: [],

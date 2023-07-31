@@ -11,7 +11,7 @@ import ObjAccordion from "../components/Editor/ObjAccordion/ObjAccordion";
 //css
 import classes from "./Edit.module.css";
 //overmind
-import { useAppState, useActions, useEffects, useReaction } from "../overmind";
+import { useAppState } from "../overmind";
 
 const Edit = () => {
   //get state from overmind
@@ -25,16 +25,16 @@ const Edit = () => {
           <Topbar />
         </Row>
         <Row>
-          <Col sm={3} xl={2} className={classes.sidebar}>
+          <Col xxl={2} className={classes.sidebar}>
             <Sidebar />
           </Col>
-          <Col sm={9} xl={10}>
+          <Col>
             <Row className={classes.infoline}>
               <InfoLine />
             </Row>
             {state.editPage.mainViewMode === "plot" && (
               <Row>
-                <Col>
+                <Col className='mt-5'>
                   <StageComp />
                 </Col>
                 <Col>
@@ -44,10 +44,9 @@ const Edit = () => {
             )}
             {state.editPage.mainViewMode === "list" && (
               <Row>
-                <Col sm={9} xl={10}>
+                <Col className='mt-5' xxl={9}>
                   <ExpandedTable />
                 </Col>
-                <Col></Col>
               </Row>
             )}
             {state.editPage.mainViewMode === "help" && (

@@ -2,7 +2,13 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { BsShareFill, BsFillGearFill } from "react-icons/bs";
+import {
+  BsShareFill,
+  BsFillGearFill,
+  BsFileEarmarkPdf,
+  BsArrowClockwise,
+  BsArrowCounterclockwise,
+} from "react-icons/bs";
 import ProjectName from "./ProjectName/ProjectName";
 //overmind
 import { useAppState, useActions } from "../../../overmind";
@@ -43,12 +49,34 @@ const Topbar = () => {
         </Navbar.Brand>
         <Nav className='me-auto' id='left-nav'>
           <NavDropdown title='File' id='menuitem-file'>
-            <NavDropdown.Item>Create New Project</NavDropdown.Item>
-            <NavDropdown.Item>Make Duplicate</NavDropdown.Item>
+            <NavDropdown.Item>New Project</NavDropdown.Item> <NavDropdown.Item>Make Duplicate</NavDropdown.Item>
             <NavDropdown.Item style={{ color: "red" }}>Delete Project</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item>
-              Share <BsShareFill className='ms-2' />
+              <span>
+                <BsShareFill className='me-2' />
+              </span>
+              Share
+            </NavDropdown.Item>
+            <NavDropdown.Item>
+              <span>
+                <BsFileEarmarkPdf className='me-2' />
+              </span>
+              Export PDF
+            </NavDropdown.Item>
+          </NavDropdown>
+          <NavDropdown title='Edit' id='menuitem-edit'>
+            <NavDropdown.Item>
+              <span>
+                <BsArrowCounterclockwise className='me-2' />
+              </span>
+              Undo
+            </NavDropdown.Item>
+            <NavDropdown.Item>
+              <span>
+                <BsArrowClockwise className='me-2' />
+              </span>
+              Redo
             </NavDropdown.Item>
           </NavDropdown>
           <NavDropdown disabled={editEnable && selectedObj ? false : true} title='Selected' id='menuitem-Selected'>

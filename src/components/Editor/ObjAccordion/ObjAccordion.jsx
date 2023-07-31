@@ -71,6 +71,10 @@ const ObjAccordion = () => {
             <AccordionItem obj={objectList.wedge_SUB} />
           </Accordion.Body>
         </Accordion.Item>
+        <Accordion.Item eventKey='Others'>
+          <Accordion.Header>Others</Accordion.Header>
+          <Accordion.Body className={classes.accordionbody}></Accordion.Body>
+        </Accordion.Item>
       </Accordion>
     </div>
   );
