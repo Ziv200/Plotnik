@@ -11,11 +11,12 @@ import ObjAccordion from "../components/Editor/ObjAccordion/ObjAccordion";
 //css
 import classes from "./Edit.module.css";
 //overmind
-import { useAppState } from "../overmind";
+import { useActions, useAppState } from "../overmind";
 
 const Edit = () => {
   //get state from overmind
   const state = useAppState();
+  const actions = useActions();
 
   return (
     <>

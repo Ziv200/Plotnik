@@ -5,6 +5,12 @@ export const state = {
     isAutoRenumber: false,
     isAutoSort: true,
     isFollowSelect: true,
+    //edit history
+    history: {
+      historyStep: 0,
+      historyList: [],
+      isDirty: false,
+    },
     //UI
     tableTab: "inputs",
     showProjSettings: false,

@@ -19,7 +19,7 @@ export const updateProjSettings = ({ state }, { key, value }) => {
 export const setTableTab = ({ state }, tab) => {
   state.editPage.tableTab = tab;
 };
-//=========================================================
+//===============================================
 //set selected obj
 export const setSelectedObj = ({ state, actions }, obj) => {
   state.editPage.selectedObj = { ...obj };
@@ -28,7 +28,7 @@ export const setSelectedObj = ({ state, actions }, obj) => {
     actions.setTableTab(obj.type);
   }
 };
-//=========================================================
+//===============================================
 //edit functions
 export const editEnableToggle = ({ state }) => {
   state.editPage.editEnable = !state.editPage.editEnable;
@@ -43,15 +43,19 @@ export const toggleAutoSort = ({ state }) => {
 export const toggleFollowSelect = ({ state }) => {
   state.editPage.isFollowSelect = !state.editPage.isFollowSelect;
 };
-//=========================================================
+//===============================================
 //canvas object functions
-export const deleteCanvasObject = ({ state }, obj) => {
+export const deleteCanvasObject = ({ state, actions }, obj) => {
+  //write to history first then delete object
+  actions.writeHistory();
   const list = state.editPage.lineList[`${obj.type}`];
   state.editPage.lineList[`${obj.type}`] = list.filter((input) => input.id !== obj.id);
   state.editPage.selectedObj = null;
 };
 
 export const addCanvasObject = ({ state, actions }, obj) => {
+  //write to history first then add object
+  actions.writeHistory();
   obj.id = uuidv4();
   const list = state.editPage.lineList[`${obj.type}`];
   //find the last patch number
@@ -61,21 +65,25 @@ export const addCanvasObject = ({ state, actions }, obj) => {
   actions.setTableTab(obj.type);
 };
 
-export const updatePostionAfterDrag = ({ state }, { obj, pos }) => {
+export const updatePostionAfterDrag = ({ state, actions }, { obj, pos }) => {
+  //write to history first then add object
+  actions.writeHistory();
   const data = state.editPage.lineList[`${obj.type}`];
   const item = data.find((item) => item.id === obj.id);
   if (item) {
     item.canvaspos = { x: pos.x, y: pos.y };
   }
 };
-export const toggleObjPropety = ({ state }, { obj, propety }) => {
+export const toggleObjPropety = ({ state, actions }, { obj, propety }) => {
+  //write to history first then add object
+  actions.writeHistory();
   const data = state.editPage.lineList[`${obj.type}`];
   const item = data.find((item) => item.id === obj.id);
   const bool = item[`${propety}`];
   item[`${propety}`] = !bool;
 };
 
-export const changeObjPropety = ({ state }, { propety, value, obj }) => {
+export const changeObjPropety = ({ state, actions }, { propety, value, obj }) => {
   //check if patchNo already exists in array
   const searchPatchNo = (value, data) => {
     for (const i in data) {
@@ -84,10 +92,12 @@ export const changeObjPropety = ({ state }, { propety, value, obj }) => {
       }
     }
   };
+
   //get the line list and the item
   const data = state.editPage.lineList[`${obj.type}`];
   const item = state.editPage.lineList[`${obj.type}`].find((item) => item.id === obj.id);
-
+  //write to history first then add object
+  actions.writeHistory();
   //if patchNo exsits dont assgin new value
   if (propety === "patchNo") {
     if (searchPatchNo(value, data) || +value === 0 || isNaN(value)) {
@@ -102,9 +112,9 @@ export const changeObjPropety = ({ state }, { propety, value, obj }) => {
   state.editPage.selectedObj = { ...item };
 };
 
-//=========================================================
+//===============================================
 //list function
-export const renumberList = ({ state }, type = state.editPage.tableTab) => {
+export const renumberList = ({ state, actions }, type = state.editPage.tableTab) => {
   //if type not provided type set to selected object type
   const list = state.editPage.lineList[`${type}`];
   list.forEach((input, index) => {
@@ -112,8 +122,83 @@ export const renumberList = ({ state }, type = state.editPage.tableTab) => {
   });
 };
 
-export const sortList = ({ state }, type = state.editPage.tableTab) => {
+export const sortList = ({ state, actions }, type = state.editPage.tableTab) => {
   //if type not provided type set to selected object type
   const list = state.editPage.lineList[`${type}`];
   list.sort((a, b) => a.patchNo - b.patchNo);
+};
+//===============================================
+//history functions(BETA)
+// export const writeHistory = ({ state }) => {
+//   if (state.editPage.historyStep < state.editPage.history.length - 1) {
+//     state.editPage.history = state.editPage.history.slice(0, state.editPage.historyStep + 1);
+//   }
+//   state.editPage.historyStep += 1;
+//   state.editPage.history.push(JSON.parse(JSON.stringify(state.editPage.lineList)));
+// };
+
+// export const undoHistory = ({ state }) => {
+//   //if historyStep is 0 do nothing
+//   if (state.editPage.historyStep === 0) {
+//     console.log("no steps");
+//     return;
+//   }
+//   //
+//   if (state.editPage.historyStep < state.editPage.history.length - 1) {
+//     state.editPage.history.push(JSON.parse(JSON.stringify(state.editPage.lineList)));
+//   }
+//   state.editPage.historyStep -= 1;
+//   const snapshot = JSON.parse(JSON.stringify(state.editPage.history[state.editPage.historyStep]));
+//   state.editPage.lineList = snapshot;
+// };
+
+// export const redoHistory = ({ state }) => {
+//   if (state.editPage.historyStep === state.editPage.history.length - 1) {
+//     console.log("no steps");
+//     return;
+//   }
+//   state.editPage.historyStep += 1;
+//   const snapshot = JSON.parse(JSON.stringify(state.editPage.history[state.editPage.historyStep]));
+//   state.editPage.lineList = snapshot;
+// };
+//===============================================
+//history functions
+export const writeHistory = ({ state }) => {
+  state.editPage.history.historyList = state.editPage.history.historyList.slice(0, state.editPage.history.historyStep);
+  state.editPage.history.historyList.push(JSON.parse(JSON.stringify(state.editPage.lineList)));
+  state.editPage.history.historyStep += 1;
+};
+
+export const undoHistory = ({ state, actions }) => {
+  //if historyStep is 0 do nothing
+  if (state.editPage.history.historyStep === 0) {
+    console.log("no steps");
+    return;
+  }
+  //if unsaved changes writeHistory and decreament step
+  //(beacause writeHistory auto increament step)
+  const current = JSON.stringify(state.editPage.lineList);
+  const prev = JSON.stringify(state.editPage.history.historyList[state.editPage.history.historyList.length - 1]);
+  if (current !== prev) {
+    console.log(JSON.parse(current));
+    console.log(JSON.parse(prev));
+    actions.writeHistory();
+    state.editPage.history.historyStep -= 1;
+  }
+  //decreament step and set state
+  state.editPage.history.historyStep -= 1;
+  const snapshot = JSON.parse(JSON.stringify(state.editPage.history.historyList[state.editPage.history.historyStep]));
+  state.editPage.lineList = snapshot;
+};
+
+export const redoHistory = ({ state }) => {
+  //if no more steps
+  if (state.editPage.history.historyStep === state.editPage.history.historyList.length - 1) {
+    console.log("no steps");
+    return;
+  }
+  //increament history step and set state
+  state.editPage.history.historyStep += 1;
+  const snapshot = JSON.parse(JSON.stringify(state.editPage.history.historyList[state.editPage.history.historyStep]));
+  state.editPage.lineList = snapshot;
 };

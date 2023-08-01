@@ -66,13 +66,13 @@ const Topbar = () => {
             </NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title='Edit' id='menuitem-edit'>
-            <NavDropdown.Item>
+            <NavDropdown.Item onClick={() => actions.undoHistory()}>
               <span>
                 <BsArrowCounterclockwise className='me-2' />
               </span>
               Undo
             </NavDropdown.Item>
-            <NavDropdown.Item>
+            <NavDropdown.Item onClick={() => actions.redoHistory()}>
               <span>
                 <BsArrowClockwise className='me-2' />
               </span>
