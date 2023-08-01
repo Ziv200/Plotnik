@@ -85,6 +85,14 @@ const Topbar = () => {
               Delete
             </NavDropdown.Item>
           </NavDropdown>
+          <Nav.Item style={{ display: "flex" }}>
+            <Nav.Link onClick={() => actions.undoHistory()}>
+              <BsArrowCounterclockwise />
+            </Nav.Link>
+            <Nav.Link onClick={() => actions.redoHistory()}>
+              <BsArrowClockwise />
+            </Nav.Link>
+          </Nav.Item>
         </Nav>
         <Nav id='right-nav'>
           <Nav.Item>

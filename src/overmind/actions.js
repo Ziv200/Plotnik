@@ -127,40 +127,7 @@ export const sortList = ({ state, actions }, type = state.editPage.tableTab) => 
   const list = state.editPage.lineList[`${type}`];
   list.sort((a, b) => a.patchNo - b.patchNo);
 };
-//===============================================
-//history functions(BETA)
-// export const writeHistory = ({ state }) => {
-//   if (state.editPage.historyStep < state.editPage.history.length - 1) {
-//     state.editPage.history = state.editPage.history.slice(0, state.editPage.historyStep + 1);
-//   }
-//   state.editPage.historyStep += 1;
-//   state.editPage.history.push(JSON.parse(JSON.stringify(state.editPage.lineList)));
-// };
 
-// export const undoHistory = ({ state }) => {
-//   //if historyStep is 0 do nothing
-//   if (state.editPage.historyStep === 0) {
-//     console.log("no steps");
-//     return;
-//   }
-//   //
-//   if (state.editPage.historyStep < state.editPage.history.length - 1) {
-//     state.editPage.history.push(JSON.parse(JSON.stringify(state.editPage.lineList)));
-//   }
-//   state.editPage.historyStep -= 1;
-//   const snapshot = JSON.parse(JSON.stringify(state.editPage.history[state.editPage.historyStep]));
-//   state.editPage.lineList = snapshot;
-// };
-
-// export const redoHistory = ({ state }) => {
-//   if (state.editPage.historyStep === state.editPage.history.length - 1) {
-//     console.log("no steps");
-//     return;
-//   }
-//   state.editPage.historyStep += 1;
-//   const snapshot = JSON.parse(JSON.stringify(state.editPage.history[state.editPage.historyStep]));
-//   state.editPage.lineList = snapshot;
-// };
 //===============================================
 //history functions
 export const writeHistory = ({ state }) => {
