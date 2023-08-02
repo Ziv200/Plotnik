@@ -2,7 +2,7 @@
 
 this is a frontend WIP for an online stageplot and tech rider creator tool.
 
-TODO
+TODO:
 solve multi channel instruments
 solve multi channel outputs
 
