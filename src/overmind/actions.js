@@ -114,7 +114,7 @@ export const changeObjPropety = ({ state, actions }, { propety, value, obj }) =>
 
 //===============================================
 //list function
-export const renumberList = ({ state, actions }, type = state.editPage.tableTab) => {
+export const renumberList = ({ state }, type = state.editPage.tableTab) => {
   //if type not provided type set to selected object type
   const list = state.editPage.lineList[`${type}`];
   list.forEach((input, index) => {
@@ -122,7 +122,7 @@ export const renumberList = ({ state, actions }, type = state.editPage.tableTab)
   });
 };
 
-export const sortList = ({ state, actions }, type = state.editPage.tableTab) => {
+export const sortList = ({ state }, type = state.editPage.tableTab) => {
   //if type not provided type set to selected object type
   const list = state.editPage.lineList[`${type}`];
   list.sort((a, b) => a.patchNo - b.patchNo);
