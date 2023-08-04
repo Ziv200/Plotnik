@@ -53,6 +53,7 @@ const ObjAccordion = () => {
             <AccordionItem obj={objectList.flute} />
             <AccordionItem obj={objectList.clarinet} />
             <AccordionItem obj={objectList.sax} />
+            <AccordionItem obj={objectList.trp} />
           </Accordion.Body>
         </Accordion.Item>
         <Accordion.Item eventKey='Misc'>

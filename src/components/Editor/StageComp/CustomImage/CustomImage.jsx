@@ -1,4 +1,4 @@
-import { Image, Text, Group, Transformer } from "react-konva";
+import { Image, Text, Group } from "react-konva";
 import useImage from "use-image";
 import { useAppState, useActions } from "../../../../overmind";
 //css
