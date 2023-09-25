@@ -4,6 +4,7 @@ import classes from "./CellToForm.module.css";
 import { useAppState, useActions } from "../../../overmind";
 import { useState, useRef, useEffect } from "react";
 
+// eslint-disable-next-line react/prop-types
 const CellToForm = ({ propety, obj }) => {
   //overmind
   const state = useAppState();
@@ -11,6 +12,7 @@ const CellToForm = ({ propety, obj }) => {
   const globalEdit = state.editPage.editEnable;
   const isAutoSort = state.editPage.isAutoSort;
   const isAutoRenumber = state.editPage.isAutoRenumber;
+  // eslint-disable-next-line react/prop-types
   const item = state.editPage.lineList[`${obj.type}`].find((item) => item.id === obj.id);
 
   //is form edit mode

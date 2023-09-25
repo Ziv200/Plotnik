@@ -169,3 +169,6 @@ export const redoHistory = ({ state }) => {
   const snapshot = JSON.parse(JSON.stringify(state.editPage.history.historyList[state.editPage.history.historyStep]));
   state.editPage.lineList = snapshot;
 };
+//========================================
+
+//export functions

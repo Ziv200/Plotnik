@@ -29,5 +29,6 @@ export const state = {
       outputs: [],
       groups: [],
     },
+    stageRef: null,
   },
 };
