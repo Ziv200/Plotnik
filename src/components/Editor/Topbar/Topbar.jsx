@@ -10,12 +10,11 @@ import {
   BsArrowCounterclockwise,
 } from "react-icons/bs";
 import ProjectName from "./ProjectName/ProjectName";
+import { handleExport } from "../../../lib/utils";
 //overmind
 import { useAppState, useActions } from "../../../overmind";
 //css
 import "./Topbar.css";
-import JsPDF from "jspdf";
-import html2canvas from "html2canvas";
 
 const Topbar = () => {
   //overmind
@@ -37,20 +36,6 @@ const Topbar = () => {
     duplicatedObj.patchNo = "";
     duplicatedObj.id = "";
     actions.addCanvasObject(duplicatedObj);
-  };
-
-  //handle export
-  const handleExport = async () => {
-    const parentElement = document.getElementById("mainStage");
-    const stage = await html2canvas(parentElement, {});
-    // Create a new PDF object.
-    const pdf = new JsPDF({ unit: "in", orientation: "landscape" });
-
-    // Add the canvas to the PDF.
-    pdf.addImage(stage, "png", 0, 0, 11.69, 8.26);
-
-    // Save the PDF.
-    pdf.save("pdf-name.pdf");
   };
 
   //fake profile image

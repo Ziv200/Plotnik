@@ -12,11 +12,23 @@ import ObjAccordion from "../components/Editor/ObjAccordion/ObjAccordion";
 import classes from "./Edit.module.css";
 //overmind
 import { useActions, useAppState } from "../overmind";
+import { useEffect } from "react";
 
 const Edit = () => {
   //get state from overmind
   const state = useAppState();
   const actions = useActions();
+
+  useEffect(() => {
+    document.addEventListener("keypress", (e) => {
+      if (e.code === "Backquote") {
+        actions.editEnableToggle();
+      }
+    });
+    return () => {
+      document.removeEventListener("keypress", () => {});
+    };
+  }, []);
 
   return (
     <>
@@ -45,9 +57,7 @@ const Edit = () => {
             )}
             {state.editPage.mainViewMode === "list" && (
               <Row>
-                <Col className='mt-5' xxl={9}>
-                  <ExpandedTable />
-                </Col>
+                <Col className='mt-5' xxl={9}></Col>
               </Row>
             )}
             {state.editPage.mainViewMode === "help" && (
