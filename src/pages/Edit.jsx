@@ -57,7 +57,9 @@ const Edit = () => {
             )}
             {state.editPage.mainViewMode === "list" && (
               <Row>
-                <Col className='mt-5' xxl={9}></Col>
+                <Col className='mt-5' xxl={9}>
+                  <ExpandedTable />
+                </Col>
               </Row>
             )}
             {state.editPage.mainViewMode === "help" && (

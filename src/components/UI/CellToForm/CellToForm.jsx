@@ -107,7 +107,7 @@ const CellToForm = ({ propety, obj }) => {
     );
   } else {
     return (
-      <td onClick={handleDoubleClick} ref={cellRef}>
+      <td onDoubleClick={handleDoubleClick} ref={cellRef}>
         {item[`${propety}`]}
       </td>
     );
